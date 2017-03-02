@@ -1,24 +1,41 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
   hello: "Hello world"
   name_website: "Ecommerce"
+  home: "Home"
+  product: "Products"
+  sale: "Sale"
+  help: "Help"
+  contact: "Contact"
+  login: "Login"
+  logout: "Logout"
+  signup: "Signup"
+  profile: "Profile"
+  name: "Name"
+  email: "Email"
+  password: "Password"
+  password_conf: "Confirmation"
+  create_account: "Creat Account"
+  address: "Adress"
+  phone: "Phone"
+  index: "Index"
+  regiter_day: "Regiter"
+  created_account: "Account successfully created."
+  new_user: "New user?   "
+  signup_now: "Signup now..."
+  forgot_password: "Forgot password..."
+  create_my_account: "Create my account"
+  invalid_email_password_combination: "Invalid email/password combination."
+  the_form_contains: "The form contains."
+  welcome: "Welcome"
+  logged_in_successfully: "Logged in successfully."
+  litle_websile: "Ruby on Rails Tutorial Sample App"
+  welcome_name: "Welcome %{name}"
+  update_profile: "Update Profile Now"
+  update_password: "Update Password"
+  update_profile_success: "Update profile success."
+  edit_profile: "Edit Profile"
+  edit_password: "Edit Password"
+  wrong_password: "Password wrong."
+  time:
+    formats:
+      date_month_year_concise: "%d-%m-%Y"

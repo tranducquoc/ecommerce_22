@@ -11,7 +11,7 @@ module SessionsHelper
     session.delete(:admin_id)
   end
 
-  def log_inuser
+  def log_in user
    session[:user_id] = user.id
   end
 
