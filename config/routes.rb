@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   scope "(:locale)", :locale => /en|vi/ do
     root "static_pages#index"
     get "/login", to: "sessions#new"
@@ -9,5 +10,7 @@ Rails.application.routes.draw do
     post "/signup", to: "users#create"
     post "/login", to: "sessions#login"
     resources :users
- end
+    resources :admins
+    resources :statistics, only: :show
+  end
 end
