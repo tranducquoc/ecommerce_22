@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170227034304) do
+ActiveRecord::Schema.define(version: 20170228071433) do
 
   create_table "carts", force: :cascade do |t|
     t.integer  "quantity",   default: 1
@@ -101,9 +101,10 @@ ActiveRecord::Schema.define(version: 20170227034304) do
     t.string   "password_digest"
     t.string   "address"
     t.string   "phone"
-    t.boolean  "id_admin",        default: false
+    t.boolean  "is_admin",        default: false
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
+    t.string   "remember_digest"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

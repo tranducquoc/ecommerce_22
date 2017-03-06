@@ -1,0 +1,48 @@
+<% provide :title, t("profile") %>
+<div class="container">
+  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0
+    col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          <%= t("welcome_name", name: current_user.name.upcase) %>
+        </h3>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-2 col-lg-2 " align="center"></div>
+          <div class=" col-md-9 col-lg-9 ">
+            <table class="table table-user-information">
+              <tbody>
+                <tr>
+                  <td><%= t "name" %></td>
+                  <td><%= @user.name %></td>
+                </tr>
+                <tr>
+                  <td><%= t "email" %></td>
+                  <td><%= @user.email %></td>
+                </tr>
+                <tr>
+                  <td><%= t "regiter_day" %></td>
+                  <td><%= l @user.created_at, format: :date_month_year_concise %>
+                  </td>
+                </tr>
+                <tr>
+                  <td><%= t "phone" %></td>
+                  <td><%= @user.phone %></td>
+                </tr>
+                <tr>
+                  <td><%= t "address" %></td>
+                  <td><%= @user.address %></td>
+                </tr>
+              </tbody>
+            </table>
+            <%= link_to t("edit_profile"), edit_user_path(current_user),
+              class: "btn btn-primary" %>
+            <%= link_to t("change_password"), "#", class: "btn btn-primary" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

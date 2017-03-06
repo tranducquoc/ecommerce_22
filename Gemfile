@@ -16,9 +16,10 @@ gem "jbuilder",     "2.4.1"
 #Signup-password
 gem "bcrypt",         "3.1.11"
 #Bootstrap
-gem "bootstrap-sass", "3.3.6" 
+gem "bootstrap-sass", "3.3.6"
 #Rails config
 gem "config"
+gem "pry"
 
 group :development, :test do
   gem "sqlite3", "1.3.12"
