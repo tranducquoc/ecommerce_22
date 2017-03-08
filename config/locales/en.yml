@@ -36,6 +36,8 @@ en:
   edit_profile: "Edit Profile"
   edit_password: "Edit Password"
   wrong_password: "Password wrong."
+  cancel: "Cancel"
+  edit_product: "Edit Product"
   time:
     formats:
       date_month_year_concise: "%d-%m-%Y"

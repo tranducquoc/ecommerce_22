@@ -61,7 +61,6 @@ ActiveRecord::Schema.define(version: 20170228071433) do
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
     t.index ["user_id", "created_at"], name: "index_orders_on_user_id_and_created_at"
-    t.index ["user_id", nil], name: "index_orders_on_user_id_and_product_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 

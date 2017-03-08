@@ -1,0 +1,37 @@
+<% provide :title, t("manage_products") %>
+<% provide :page_header, t("show_products") %>
+<div class="panel panel-default">
+  <div class="panel-heading"><%= t "all_product" %>
+  </div>
+  <table class="table table-bordered" id="datatable">
+    <thead>
+      <tr>
+        <th style="">
+          <div class="th-inner sortable"><%= t "name" %></div>
+          <div class="fht-cell"></div>
+        </th>
+        <th style="">
+          <div class="th-inner sortable"><%= t "info" %></div>
+          <div class="fht-cell"></div>
+        </th>
+        <th style="">
+          <div class="th-inner sortable"><%= t "day_added" %></div>
+          <div class="fht-cell"></div>
+        </th>
+        <th style="">
+          <div class="th-inner sortable"><%= t "price" %></div>
+          <div class="fht-cell"></div>
+        </th>
+        <th style="">
+          <div class="th-inner sortable"><%= t "function" %></div>
+          <div class="fht-cell"></div>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% convert_info %>
+        <%= render partial: "table", collection: @products, as: :product %>
+    </tbody>
+  </table>
+</div>
+<%= render partial: "modal", collection: @products, as: :product %>

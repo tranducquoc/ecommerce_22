@@ -1,6 +1,6 @@
-$( document ).ready(function() {
-  console.log( "ready!" );
-  $('#product_image').bind('change', function() {
+$(document).ready(function() {
+  console.log( 'ready!' );
+  $('.change_picture').bind('change', function() {
     var size_in_megabytes = this.files[0].size/1024/1024;
     if (size_in_megabytes > 5) {
       alert('Maximum file size is 5MB. Please choose a smaller file.');
@@ -8,16 +8,32 @@ $( document ).ready(function() {
   });
 });
 $(document).ready(function(){
-  var preview = $(".upload-preview img");
-
-  $("#product_image").change(function(event){
+  $('.change_picture').change(function(event){
+  var preview  = $(this).closest('.find_image').find('.upload-preview img');
    var input = $(event.currentTarget);
    var file = input[0].files[0];
    var reader = new FileReader();
    reader.onload = function(e){
-     image_base64 = e.target.result;
-     preview.attr("src", image_base64);
-   };
-   reader.readAsDataURL(file);
- });
+    image_base64 = e.target.result;
+    preview.attr('src', image_base64);
+  };
+  reader.readAsDataURL(file);
+});
+});
+
+!function($) {
+  $(document).on('click','ul.nav li.parent > a > span.icon', function(){
+    $(this).find('em:first').toggleClass('glyphicon-minus');
+  });
+  $('.sidebar span.icon').find('em:first').addClass('glyphicon-plus');
+}(window.jQuery);
+
+$(window).on('resize', function () {
+  if ($(window).width() > 768) $('#sidebar-collapse').collapse('show')
+});
+$(window).on('resize', function () {
+  if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
+});
+$(document).ready(function() {
+  $('#datatable').DataTable();
 });
