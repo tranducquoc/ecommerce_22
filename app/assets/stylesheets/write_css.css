@@ -56,3 +56,10 @@ img {
 .line_pear {
   background: gainsboro;
 }
+.image_on_table {
+  width: 100px;
+  height: auto;
+}
+.pagrinate {
+  float: right;
+}
