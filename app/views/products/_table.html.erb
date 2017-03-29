@@ -1,0 +1,15 @@
+<tr data-id="<%= product.id %>">
+  <td style=""><%= product.name %></td>
+  <td style=""><%= product.info %></td>
+  <td style=""><%= l product.created_at, format: :date_month_year_concise %></td>
+  <td style=""><%= product.price %></td>
+  <td style="">
+    <div class="div_function">
+      <%= link_to t("edit"), "#modal#{product.id}",
+        class: "glyphicon glyphicon-edit", data: {toggle: "modal"} %>
+      <%= link_to t("delete"), product_path(product), method: :delete,
+      data: {confirm: t("are_you_sure")},
+      class: "glyphicon glyphicon-remove" %>
+    </div>
+  </td>
+</tr>

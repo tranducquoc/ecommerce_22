@@ -1,0 +1,53 @@
+ <div id=<%= "modal#{product.id}" %> class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"><%= t "edit_product" %></h4>
+      </div>
+      <div class="modal-body find_image" data-id="1">
+        <div class="col-md-8">
+          <%= form_for product, html: {multipart: true} do |f| %>
+          <%= render "shared/error_messages", object: f.object %>
+          <%= f.label :name, t("name") %>
+          <%= f.text_field :name, class: "form-control" %>
+
+          <%= f.label :info, t("info") %>
+          <%= f.text_field :info, class: "form-control" %>
+
+          <%= f.label :price, t("price") %>
+          <%= f.number_field :price, class: "form-control" %>
+
+          <div class="form-group">
+            <div id= "show_image"><%=%></div>
+            <%= f.label :categorie_id, t("categories") %>
+            <%= f.select :categorie_id,
+            @categories.collect {|a| [ a.name, a.id ]},
+            {prompt: t("view.product")},
+            class: "form-control" %>
+          </div>
+          <span class="picture">
+            <%= f.file_field :image, class: "change_picture", accept: "image/jpeg,image/gif,image/png" %>
+          </span>
+          <br>
+          <%= f.submit t("edit_product"), class: "btn btn-primary"%>
+          <% end %>
+        </div>
+        <dir class="col-md-3 .col-md-offset-2 image">
+          <div class="panel-body">
+            <div class="upload-preview">
+              <%= t "image_product" %>
+              <div class="panel panel_image"></div>
+              <% if product.image? %>
+              <%= image_tag "#{product.image}" %>
+              <% else %>
+              <%= image_tag "no_image.jpg" %>
+              <% end %>
+            </div>
+          </div>
+        </dir>
+      </div>
+      <div class="modal-footer"></div>
+    </div>
+  </div>
+</div>
