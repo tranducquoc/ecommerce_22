@@ -21,10 +21,14 @@ class CategoriesController < ApplicationController
   end
 
   def destroy
-    if @categorie.destroy
-      flash[:success] = t "delete_categorie_success"
+    if @categorie.products.size > 0
+      flash[:danger] = t "delete_categorie_error"
     else
-      flash[:danger] = t "delete_categorie_fail"
+      if @categorie.destroy
+        flash[:success] = t "delete_categorie_success"
+      else
+        flash[:danger] = t "delete_categorie_fail"
+      end
     end
     redirect_to new_category_path
   end

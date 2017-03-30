@@ -9,10 +9,12 @@ Rails.application.routes.draw do
     get "/profile", to: "users#show"
     post "/signup", to: "users#create"
     post "/login", to: "sessions#login"
+
     resources :users
     resources :admins
     resources :statistics, only: :show
-    resources :products
     resources :categories
+    resources :imports, only: :create
+    resources :products
   end
 end

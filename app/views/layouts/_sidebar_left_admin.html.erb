@@ -5,37 +5,41 @@
     </div>
   </form>
   <ul class="nav menu">
-    <li id="id_genaral">
+    <li class="lagure_menu">
       <%= link_to "#" do %>
         <%= inline_svg "icon/svg/monitor.svg", class: "menu_icon" %>
         <%= t "genaral" %>
       <% end %>
     </li>
-    <li id="id_product">
-      <%= link_to "#" do %>
+    <li class="lagure_menu">
+      <%= link_to "javascript:void(0)" do %>
         <%= inline_svg "icon/svg/pie-chart.svg", class: "menu_icon" %>
         <%= t "manage_products" %>
       <% end %>
-    </li id="id_user">
-    <li>
+      <div class="menu_son">
+        <%= link_to t("add_product"), new_product_path, class: "mutile_menu" %>
+        <%= link_to t("show_product"), products_path, class: "mutile_menu" %>
+      </div>
+    </li>
+    <li class="lagure_menu">
       <%= link_to "#" do %>
         <%= inline_svg "icon/svg/avatar.svg", class: "menu_icon" %>
         <%= t "manage_users" %>
       <% end %>
     </li>
-    <li id="id_order">
+    <li class="lagure_menu">
       <%= link_to "#" do %>
         <%= inline_svg "icon/svg/shopping-bag.svg", class: "menu_icon" %>
         <%= t "manage_oders" %>
       <% end %>
     </li>
-    <li id="id_categorie">
-      <%= link_to "#" do %>
+    <li class="lagure_menu">
+      <%= link_to new_category_path do %>
         <%= inline_svg "icon/svg/copy.svg", class: "menu_icon" %>
         <%= t "manager_categories" %>
       <% end %>
     </li>
-    <li id="id_request">
+   <li class="lagure_menu">
       <%= link_to "#" do %>
         <%= inline_svg "icon/svg/chat-2.svg", class: "menu_icon" %>
         <%= t "manage_requests" %>

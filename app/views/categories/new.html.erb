@@ -21,6 +21,10 @@
         <thead>
           <tr>
             <th style="">
+              <div class="th-inner sortable"><%= t "id" %></div>
+              <div class="fht-cell"></div>
+            </th>
+            <th style="">
               <div class="th-inner sortable"><%= t "name" %></div>
               <div class="fht-cell"></div>
             </th>
@@ -50,7 +54,7 @@
       <div class="upload-preview">
         <%= t "image_categorie" %>
         <div class="panel panel_image"></div>
-        <%= image_tag "no_image.jpg" %>
+        <%= image_tag t "no_image" %>
       </div>
     </div>
   </div>
