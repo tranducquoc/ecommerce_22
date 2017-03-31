@@ -13,7 +13,7 @@ class ProductsController < ApplicationController
     @product = Product.new product_params
     if @product.save
       flash[:success] = t "created_product"
-      redirect_to test_path
+      redirect_to new_product_path
     else
      render :new
     end
@@ -30,7 +30,8 @@ class ProductsController < ApplicationController
 
   def index
     @categories = Categorie.all
-    @products = Product.all
+    @products = Product.paginate page: params[:page],
+      per_page: Settings.maximum_per_page
   end
 
   def update

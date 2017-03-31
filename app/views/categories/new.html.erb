@@ -1,0 +1,58 @@
+<% provide :title, t("categorie") %>
+<% provide :page_header, t("add_categories") %>
+<div class="find_image">
+  <div class="col-md-8">
+    <%= form_for @categorie, html: {multipart: true} do |f| %>
+      <%= render "shared/error_messages", object: f.object %>
+      <%= f.label :name, t("name") %>
+      <%= f.text_field :name, class: "form-control" %>
+      <span class="picture">
+        <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png",
+          class: "change_picture" %>
+      </span>
+      <br>
+      <%= f.submit t("create_new_categorie"), class: "btn btn-primary" %>
+    <% end %>
+    <br>
+    <div class="panel panel-default">
+      <div class="panel-heading"><%= t "all_categorie" %>
+      </div>
+      <table class="table table-bordered" id="datatable">
+        <thead>
+          <tr>
+            <th style="">
+              <div class="th-inner sortable"><%= t "name" %></div>
+              <div class="fht-cell"></div>
+            </th>
+            <th style="">
+              <div class="th-inner sortable"><%= t "added_day" %></div>
+              <div class="fht-cell"></div>
+            </th>
+            <th style="">
+              <div class="th-inner sortable"><%= t "image" %></div>
+              <div class="fht-cell"></div>
+            </th>
+            <th style="">
+              <div class="th-inner sortable"><%= t "funtion" %></div>
+              <div class="fht-cell"></div>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render partial: "table", collection: @categories, as: :categorie %>
+        </tbody>
+      </table>
+    </div>
+    <div class="pagrinate"><%= will_paginate @categories %></div>
+  </div>
+  <di class="col-md-3 .col-md-offset-2 ">
+    <div class="panel-body">
+      <div class="upload-preview">
+        <%= t "image_categorie" %>
+        <div class="panel panel_image"></div>
+        <%= image_tag "no_image.jpg" %>
+      </div>
+    </div>
+  </div>
+</div>
+<%= render partial: "modal", collection: @categories, as: :categorie %>

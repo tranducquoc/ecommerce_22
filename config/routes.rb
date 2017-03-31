@@ -13,5 +13,6 @@ Rails.application.routes.draw do
     resources :admins
     resources :statistics, only: :show
     resources :products
+    resources :categories
   end
 end

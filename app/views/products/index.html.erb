@@ -30,8 +30,9 @@
     </thead>
     <tbody>
       <% convert_info %>
-        <%= render partial: "table", collection: @products, as: :product %>
+      <%= render partial: "table", collection: @products, as: :product %>
     </tbody>
   </table>
+  <div class="pagrinate"><%= will_paginate @products %></div>
 </div>
 <%= render partial: "modal", collection: @products, as: :product %>

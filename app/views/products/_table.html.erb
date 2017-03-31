@@ -8,8 +8,7 @@
       <%= link_to t("edit"), "#modal#{product.id}",
         class: "glyphicon glyphicon-edit", data: {toggle: "modal"} %>
       <%= link_to t("delete"), product_path(product), method: :delete,
-      data: {confirm: t("are_you_sure")},
-      class: "glyphicon glyphicon-remove" %>
+        data: {confirm: t("are_you_sure")}, class: "glyphicon glyphicon-remove" %>
     </div>
   </td>
 </tr>
