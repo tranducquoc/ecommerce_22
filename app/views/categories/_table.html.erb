@@ -1,10 +1,11 @@
 <tr>
+  <td style=""><%= categorie.id %></td>
   <td style=""><%= categorie.name %></td>
   <td style=""><%= l categorie.created_at, format: :date_month_year_concise %></td>
   <% if categorie.image? %>
     <td style=""><%= image_tag "#{categorie.image}", class: "image_on_table" %></td>
   <% else %>
-    <td style=""><%= image_tag "no_image.jpg", class: "image_on_table" %></td>
+    <td style=""><%= image_tag t "no_image", class: "image_on_table" %></td>
   <% end %>
   <td style="">
     <div class="div_function">
