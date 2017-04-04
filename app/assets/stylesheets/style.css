@@ -125,7 +125,7 @@ ul {
   height: 150px;
   object-fit: cover;
 }
-.section_table .table .content_table .item .btn-custom {
+.btn-custom {
   display: block;
   width: 70%;
   margin: 10px auto;

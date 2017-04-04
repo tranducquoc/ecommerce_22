@@ -1,46 +1,26 @@
 <% provide :title, t("manage_products") %>
 <% provide :page_header, t("show_products") %>
 <div class="panel panel-default">
-  <div class="panel-heading"><%= t "all_product" %>
-  </div>
-  <table class="table table-bordered" id="datatable">
-    <thead>
-      <tr>
-        <th style="">
-          <div class="th-inner sortable"><%= t "id" %></div>
-          <div class="fht-cell"></div>
-        </th>
-        <th style="">
-          <div class="th-inner sortable"><%= t "name" %></div>
-          <div class="fht-cell"></div>
-        </th>
-        <th style="">
-          <div class="th-inner sortable"><%= t "info" %></div>
-          <div class="fht-cell"></div>
-        </th>
-        <th style="">
-          <div class="th-inner sortable"><%= t "day_added" %></div>
-          <div class="fht-cell"></div>
-        </th>
-        <th style="">
-          <div class="th-inner sortable"><%= t "price" %></div>
-          <div class="fht-cell"></div>
-        </th>
-        <th style="">
-          <div class="th-inner sortable"><%= t "categorie" %></div>
-          <div class="fht-cell"></div>
-        </th>
-        <th style="">
-          <div class="th-inner sortable"><%= t "function" %></div>
-          <div class="fht-cell"></div>
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <% convert_info %>
-      <%= render partial: "table", collection: @products, as: :product %>
-    </tbody>
-  </table>
+  <div class="panel-heading"><%= t "all_product" %></div>
+  <section class="section_table">
+    <table class="table table-bordered" id="datatable">
+      <thead>
+        <tr class="title_table">
+          <th class="title_cell"><%= t "id" %></th>
+          <th class="title_cell"><%= t "name" %></th>
+          <th class="title_cell"><%= t "info" %></th>
+          <th class="title_cell"><%= t "day_added" %></th>
+          <th class="title_cell"><%= t "price" %></th>
+          <th class="title_cell"><%= t "categorie" %></th>
+          <th class="title_cell"><%= t "function" %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% convert_info %>
+        <%= render partial: "table", collection: @products, as: :product %>
+      </tbody>
+    </table>
+  </section>
   <div class="pagrinate"><%= will_paginate @products %></div>
 </div>
 <%= render partial: "modal", collection: @products, as: :product %>

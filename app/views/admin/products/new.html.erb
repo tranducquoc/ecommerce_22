@@ -5,14 +5,14 @@
     <li class="active">
       <a  href="#1a" data-toggle="tab"><%= t "add_products" %></a>
     </li>
-    <li><a href="#2a" data-toggle="tab"><%= t "import_products" %></a>
-    </li>
+    <li><a href="#2a" data-toggle="tab"><%= t "import_products" %></a></li>
   </ul>
   <div class="tab-content clearfix">
     <div class="tab-pane active" id="1a">
       <div class= "find_image">
         <div class="col-md-8">
-          <%= form_for @product, html: {multipart: true} do |f| %>
+          <%= form_for [:admin ,@product],
+            html: {multipart: true} do |f| %>
             <%= render "shared/error_messages", object: f.object %>
             <%= f.label :name, t("name") %>
             <%= f.text_field :name, class: "form-control" %>
@@ -35,7 +35,8 @@
                 accept: "image/jpeg,image/gif,image/png" %>
             </span>
             <br>
-            <%= f.submit t("create_new_product"), class: "btn btn-primary" %>
+            <%= f.submit t("create_new_product"),
+              class: "btn btn-custom btn-success" %>
           <% end %>
         </div>
         <dir class="col-md-3 .col-md-offset-2">

@@ -1,18 +1,16 @@
-<tr>
-  <td style=""><%= categorie.id %></td>
-  <td style=""><%= categorie.name %></td>
-  <td style=""><%= l categorie.created_at, format: :date_month_year_concise %></td>
+<tr class="content_table">
+  <td class="item"><%= categorie.id %></td>
+  <td class="item"><%= categorie.name %></td>
+  <td class="item"><%= l categorie.created_at, format: :date_month_year_concise %></td>
   <% if categorie.image? %>
-    <td style=""><%= image_tag "#{categorie.image}", class: "image_on_table" %></td>
+    <td class="item"><%= image_tag "#{categorie.image}", class: "img_cover" %></td>
   <% else %>
-    <td style=""><%= image_tag t "no_image", class: "image_on_table" %></td>
+    <td class="item"><%= image_tag t "no_image", class: "img_cover" %></td>
   <% end %>
-  <td style="">
-    <div class="div_function">
-      <%= link_to t("edit"), "#modal#{categorie.id}",
-        class: "glyphicon glyphicon-edit", data:{toggle: "modal"} %>
-      <%= link_to t("delete"), category_path(categorie), method: :delete,
-        data: {confirm: t("are_you_sure")}, class: "glyphicon glyphicon-remove" %>
-    </div>
+  <td class="item">
+    <%= link_to t("edit"), "#modal#{categorie.id}",
+      class: "btn btn-custom btn-info", data:{toggle: "modal"} %>
+    <%= link_to t("delete"), admin_category_path(categorie), method: :delete,
+      data: {confirm: t("are_you_sure")}, class: "btn btn-custom btn-danger" %>
   </td>
 </tr>

@@ -43,6 +43,7 @@ en:
   time:
     formats:
       date_month_year_concise: "%d-%m-%Y"
+      dmy_hms_concise: "%d-%m-%Y %H:%M:%S"
   picture_than_5MB: "should be less than 5MB"
   view:
     product: "Chose categorie"
@@ -61,12 +62,22 @@ en:
   delete_categorie_fail: "Delete categorie fail."
   delete_order_success: "Delete order success."
   update_order_success: "Update order success."
-  update_product_success: "Delete product success."
-  update_categorie_success: "Delete categorie success."
+  update_product_success: "Update product success."
+  update_categorie_success: "Update categorie success."
   import_products_choose: "Upload file (*.csv, *.xls, *.xlsx)"
   import: "Import"
   import_success: "Import success."
   Import_fail: "Import fail."
   no_image: "no_image.jpg"
   it_have: " It have "
-  delete_categorie_error: "Category has products. Can you delete products of category befor delete it."
+  delete_categorie_error: "Category has %{number} products. Can you delete products of category befor delete it."
+  total_price: "Total(Summoney - Discount)"
+  number:
+    currency:
+     format:
+        unit: "$"      #đơn vị
+        delimiter: ","   #tách biệt hàng trăm, nghìn, triệu, ...
+        separator: "."   #cách biệt thập phân
+        precision: 1    #lấy sau dấy phẩy bao nhiêu số
+        format: "%u%n"   # n:number; u:unit. Chỉ ra vị trí hiển thị
+    discount: "%{discount}%"

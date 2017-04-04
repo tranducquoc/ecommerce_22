@@ -13,7 +13,7 @@ class Admin::ProductsController < ApplicationController
     @product = Product.new product_params
     if @product.save
       flash[:success] = t "created_product"
-      redirect_to new_product_path
+      redirect_to new_admin_product_path
     else
      render :new
     end
@@ -25,7 +25,7 @@ class Admin::ProductsController < ApplicationController
     else
       flash[:danger] = t "delete_product_fail"
     end
-    redirect_to products_path
+    redirect_to admin_products_path
   end
 
   def index
@@ -40,7 +40,7 @@ class Admin::ProductsController < ApplicationController
     else
       flash[:danger] = t "update_product_fail"
     end
-    redirect_to products_path
+    redirect_to admin_products_path
   end
 
   private
@@ -49,7 +49,7 @@ class Admin::ProductsController < ApplicationController
     @product = Product.find_by id: params[:id]
     return if @product
     flash[:danger] = t "find_error"
-    redirect_to product_path
+    redirect_to admin_product_path
   end
 
   def product_params

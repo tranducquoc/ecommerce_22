@@ -7,7 +7,8 @@
       </div>
       <div class="modal-body find_image">
         <div class="col-md-8">
-          <%= form_for categorie, html: {multipart: true} do |f| %>
+          <%= form_for [:admin, categorie],
+            html: {multipart: true} do |f| %>
             <%= render "shared/error_messages", object: f.object %>
             <%= f.label :name, t("name") %>
             <%= f.text_field :name, class: "form-control" %>
@@ -16,7 +17,7 @@
                 class: "change_picture" %>
             </span>
             <br>
-            <%= f.submit t("edit_categorie"), class: "btn btn-primary" %>
+            <%= f.submit t("edit_categorie"), class: "btn btn-custom btn-success" %>
           <% end %>
         </div>
         <dir class="col-md-3 .col-md-offset-2 ">
