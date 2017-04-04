@@ -1,0 +1,31 @@
+<% provide :title, t("manage_users") %>
+<% provide :page_header, t("show_all_user") %>
+<div class="find_image">
+  <div class="col-md-12">
+    <br>
+    <div class="panel panel-default">
+      <div class="panel-heading"><%= t "all_user" %>
+      </div>
+      <section class="section_table">
+        <table class="table table-bordered" id="datatable">
+          <thead>
+            <tr class="title_table">
+              <th class="title_cell"><%= t "id" %></th>
+              <th class="title_cell"><%= t "name" %></th>
+              <th class="title_cell"><%= t "address" %></th>
+              <th class="title_cell"><%= t "phone" %></th>
+              <th class="title_cell"><%= t "regiter_day" %></th>
+              <th class="title_cell"><%= t "ordered" %></th>
+              <th class="title_cell"><%= t "funtion" %></th>
+            </tr>
+          </thead>
+          <tbody>
+            <%= render partial: "table", collection: @users, as: :user %>
+          </tbody>
+        </table>
+      </section>
+    </div>
+    <div class="pagrinate"><%= will_paginate @users %></div>
+  </div>
+</div>
+<%= render partial: "modal", collection: @users, as: :user %>

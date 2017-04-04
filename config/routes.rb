@@ -11,10 +11,24 @@ Rails.application.routes.draw do
     post "/login", to: "sessions#login"
 
     resources :users
-    resources :admins
     resources :statistics, only: :show
     resources :categories
     resources :imports, only: :create
     resources :products
+    resources :admins
+    resources :products
+    resources :rate
+    resources :suggest
+    resources :cart
+
+    namespace :admin do
+      resources :rate
+      resources :suggest
+      resources :cart
+      resources :categories
+      resources :users
+      resources :admins
+      resources :products
+    end
   end
 end

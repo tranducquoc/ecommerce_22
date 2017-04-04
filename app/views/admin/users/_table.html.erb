@@ -1,0 +1,13 @@
+<tr class="content_table">
+  <td class="item"><%= user.id %></td>
+  <td class="item"><%= user.name %></td>
+  <td class="item"><%= user.address %></td>
+  <td class="item"><%= user.phone %></td>
+  <td class="item"><%= l user.created_at, format: :date_month_year_concise %></td>
+  <td class="item"><%= user.orders.size %></td>
+  <td class="item">
+    <%= link_to t("detail"), "#modal#{user.id}",
+      class: "btn btn-custom btn-success", data:{toggle: "modal"} %>
+  </td>
+  </td>
+</tr>
