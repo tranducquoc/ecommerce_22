@@ -20,10 +20,15 @@ class Admin::ProductsController < ApplicationController
   end
 
   def destroy
-    if @product.destroy
-      flash[:success] = t "delete_product_success"
+    if @product.order_details.size > 0
+      flash[:danger] = t("delete_product_error",
+        number: @product.order_details.size)
     else
-      flash[:danger] = t "delete_product_fail"
+      if @product.destroy
+        flash[:success] = t "delete_product_success"
+      else
+        flash[:danger] = t "delete_product_fail"
+      end
     end
     redirect_to admin_products_path
   end

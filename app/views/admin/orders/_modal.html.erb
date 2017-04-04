@@ -1,0 +1,63 @@
+<div id=<%= "modal#{order.id}" %> class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"><%= t "view_order" %></h4>
+      </div>
+      <div class="modal-body">
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-2 col-lg-2 " align="center"></div>
+            <div class=" col-md-9 col-lg-9 ">
+              <table class="table table-user-information">
+                <tbody>
+                  <tr>
+                    <td><%= t "id_order" %></td>
+                    <td><%= order.id %></td>
+                  </tr>
+                  <tr>
+                    <td><%= t "user_name" %></td>
+                    <td><%= order.user_name %></td>
+                  </tr>
+                  <tr>
+                    <td><%= t "user_email" %></td>
+                    <td><%= order.user_email %></td>
+                  </tr>
+                  <tr>
+                    <td><%= t "receive_phone" %></td>
+                    <td><%= order.phone %></td>
+                  </tr>
+                  <tr>
+                    <td><%= t "receive_address" %></td>
+                    <td><%= order.address %></td>
+                  </tr>
+                  <tr>
+                    <td><%= t "order_created" %></td>
+                    <td><%= l order.created_at, format: :dmy_hms_concise %>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><%= t "delivery_day" %></td>
+                    <td><%= l order.delivery_day, format: :date_month_year_concise %>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><%= t "note_order" %></td>
+                    <td><%= order.note %>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><%= t "status" %></td>
+                    <td><%= order.status %></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer"></div>
+    </div>
+  </div>
+</div>

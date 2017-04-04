@@ -71,7 +71,9 @@ en:
   no_image: "no_image.jpg"
   it_have: " It have "
   delete_categorie_error: "Category has %{number} products. Can you delete products of category befor delete it."
+  delete_product_error: "Product have in %{number} orders. Don't delete product."
   total_price: "Total(Summoney - Discount)"
+  view: "View"
   number:
     currency:
      format:

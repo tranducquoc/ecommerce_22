@@ -17,20 +17,21 @@ Rails.application.routes.draw do
     resources :products
     resources :admins
     resources :products
-    resources :rate
-    resources :suggest
-    resources :cart
+    resources :rates
+    resources :suggests
+    resources :carts
     resources :orders
 
     namespace :admin do
       resources :orders
-      resources :rate
-      resources :suggest
-      resources :cart
+      resources :rates
+      resources :suggests
+      resources :carts
       resources :categories
       resources :users
       resources :admins
       resources :products
+      resources :orders
     end
   end
 end

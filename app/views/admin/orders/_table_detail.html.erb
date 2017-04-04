@@ -1,0 +1,14 @@
+<tr class="content_table">
+  <td class="item"><%= order_detail.id %></td>
+  <td class="item"><%= order_detail.product_name %></td>
+  <td class="item"><%= order_detail.note %></td>
+  <td class="item"><%= order_detail.quantity %></td>
+  <td class="money"><%= number_to_currency order_detail.price %></td>
+  <td class="money">
+    <%= number_to_currency OrderLib.calculate_product(order_detail) %>
+  </td>
+  <td class="item">
+    <%= link_to t("delete"), "#",
+      class: "btn btn-custom btn-danger", data:{toggle: "modal"} %>
+  </td>
+</tr>

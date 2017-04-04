@@ -1,0 +1,29 @@
+<% provide :title, t("manage_orders") %>
+<% provide :page_header, t("show_all_order") %>
+<div class="find_image">
+  <div class="col-md-12">
+    <br>
+    <div class="panel panel-default">
+      <div class="panel-heading"><%= t "all_order" %>
+      </div>
+      <section class="section_table">
+        <table class="table table-bordered" id="datatable">
+          <thead>
+            <tr class="title_table">
+              <th class="title_cell"><%= t "id" %></th>
+              <th class="title_cell"><%= t "delivery_day" %></th>
+              <th class="title_cell"><%= t "created_at" %></th>
+              <th class="title_cell"><%= t "status" %></th>
+              <th class="title_cell"><%= t "funtion" %></th>
+            </tr>
+          </thead>
+          <tbody>
+            <%= render partial: "table", collection: @orders, as: :order %>
+          </tbody>
+        </table>
+      </section>
+    </div>
+    <div class="pagrinate"><%= will_paginate @orders %></div>
+  </div>
+</div>
+<%= render partial: "modal", collection: @orders, as: :order %>
