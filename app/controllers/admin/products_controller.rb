@@ -1,4 +1,4 @@
-class ProductsController < ApplicationController
+class Admin::ProductsController < ApplicationController
   layout "admin_layout"
 
   before_action :load_product, only: [:destroy, :update]

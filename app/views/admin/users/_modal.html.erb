@@ -1,0 +1,53 @@
+<div id=<%= "modal#{user.id}" %> class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"><%= t "profile" %><%= ": #{user.name}" %></h4>
+      </div>
+      <div class="modal-body">
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-2 col-lg-2 " align="center"></div>
+            <div class=" col-md-9 col-lg-9 ">
+              <table class="table table-user-information">
+                <tbody>
+                  <tr>
+                    <td><%= t "id" %></td>
+                    <td><%= user.id %></td>
+                  </tr>
+                  <tr>
+                    <td><%= t "name" %></td>
+                    <td><%= user.name %></td>
+                  </tr>
+                  <tr>
+                    <td><%= t "email" %></td>
+                    <td><%= user.email %></td>
+                  </tr>
+                  <tr>
+                    <td><%= t "phone" %></td>
+                    <td><%= user.phone %></td>
+                  </tr>
+                  <tr>
+                    <td><%= t "address" %></td>
+                    <td><%= user.address %></td>
+                  </tr>
+                  <tr>
+                    <td><%= t "regiter_day" %></td>
+                    <td><%= l user.created_at, format: :date_month_year_concise %>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><%= t "ordered" %></td>
+                    <td><%= user.orders.size %></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer"></div>
+    </div>
+  </div>
+</div>
