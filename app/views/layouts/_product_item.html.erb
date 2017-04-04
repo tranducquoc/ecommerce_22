@@ -1,19 +1,44 @@
 <li class="col-sm-3 product_item">
   <div class="content product_content">
     <%= link_to product_path(product),class: "img_product_cover" do %>
-        <%= image_tag product.image %>
+      <%= image_tag product.image %>
     <% end %>
     <div class="product_des">
       <div class="group_btn clearfix">
-        <span><%= link_to t("add_to_cart"), carts_path(product_id: product.id,
-          product_name: product.name, product_image: product.image , note: "",
-          quantity: 1, price: product.price), method: :post,
-          class: "btn btn_custom btn_cart add_to_cart", remote: true %></span>
         <%= link_to t("detail"), product_path(product),
           class: "btn btn_custom btn_detail" %>
+        <% if product.selling? %>
+          <span><%= link_to t("add_to_cart"), carts_path(product_id: product.id,
+            product_name: product.name, product_image: product.image,
+            quantity: 1, price: product.price), method: :post,
+            class: "btn btn_custom btn_cart add_to_cart", remote: true %></span>
+            <div class="status_product_sell">
+              <%= check_status_product product %>
+            </div>
+        <% else %>
+          <span><%= link_to t("add_to_cart"), "#",
+            class: "btn btn_custom btn_cart", disabled: "disabled" %></span>
+          <% if product.stopbusiness? %>
+            <div class="status_product_nosell">
+              <%= check_status_product product %>
+            </div>
+          <% else %>
+            <div class="status_product_presell">
+              <%= check_status_product product %>
+            </div>
+          <% end %>
+        <% end %>
+        <div class="star_show text-center" data-rating="<%= load_rate product %>">
+          <%= label_tag "", "(#{product.rates.count})",
+            class: "glyphicon glyphicon-user icon_rate" %>
+        </div>
       </div>
       <h3 class="title"><%= product.name %></h3>
-      <p class="price"><%= number_to_currency product.price %></p>
+      <% if product.stopbusiness? %>
+        <p class="price"><%= number_to_currency 0 %></p>
+      <% else %>
+        <p class="price"><%= number_to_currency product.price %></p>
+      <% end %>
     </div>
   </div>
 </li>

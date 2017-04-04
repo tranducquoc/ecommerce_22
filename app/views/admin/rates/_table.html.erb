@@ -1,0 +1,11 @@
+<tr class="content_table">
+  <td class="item"><%= rate.id %></td>
+  <td class="item"><%= rate.user_id %></td>
+  <td class="item"><%= rate.user_name %></td>
+  <td class="item"><%= rate.product_id %></td>
+  <td class="item"><%= rate.name %></td>
+  <td class="item"><%= l rate.created_at, format: :date_month_year_concise %></td>
+  <td class="item">
+    <div class="star_show text-center" data-rating="<%= rate.point %>"></div>
+  </td>
+</tr>

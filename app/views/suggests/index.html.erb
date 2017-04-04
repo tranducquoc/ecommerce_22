@@ -1,0 +1,27 @@
+<div class="find_image">
+  <div class="col-md-12">
+    <br>
+    <div class="panel panel-default">
+      <div class="panel-heading"><%= t "all_suggest" %>
+        <%= link_to t("new_suggest"), new_suggest_path, class: "btn btn-info btn_new_suggest" %>
+      </div>
+      <section class="section_table">
+        <table class="table table-bordered" id="datatable">
+          <thead>
+            <tr class="title_table">
+              <th class="title_cell"><%= t "id" %></th>
+              <th class="title_cell"><%= t "created" %></th>
+              <th class="title_cell"><%= t "status" %></th>
+              <th class="title_cell"><%= t "funtion" %></th>
+            </tr>
+          </thead>
+          <tbody>
+            <%= render partial: "item", collection: @suggests, as: :suggest %>
+          </tbody>
+        </table>
+      </section>
+    </div>
+    <div class="pagrinate"><%= will_paginate @suggests %></div>
+  </div>
+</div>
+<%= render partial: "modal", collection: @suggests, as: :suggest %>

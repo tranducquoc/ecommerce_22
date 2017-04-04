@@ -4,7 +4,7 @@ class CreateProducts < ActiveRecord::Migration[5.0]
       t.string :name
       t.text :info
       t.integer :price
-      t.string :image, default: "products/product.pnj" 
+      t.string :image
       t.references :categorie, foreign_key: true
 
       t.timestamps

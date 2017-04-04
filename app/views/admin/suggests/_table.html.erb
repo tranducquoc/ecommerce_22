@@ -1,0 +1,15 @@
+<tr class="content_table" data-id="<%= suggest.id %>">
+  <td class="item"><%= suggest.id %></td>
+  <td class="item"><%= suggest.name %></td>
+  <td class="item"><%= suggest.email %></td>
+  <td class="item"><%= l suggest.created_at, format: :dmy_hms_concise %></td>
+  <td class="item font_status"><%= suggest.status %></td>
+  <td class="item">
+    <%= link_to t("view"), "#modal#{suggest.id}",
+      class: "btn btn-custom btn-success", data: {toggle: "modal"} %>
+    <% if Suggest.statuses[suggest.status] < Settings.end_status_suggest %>
+      <%= link_to Suggest.statuses.key(Suggest.statuses[suggest.status] + 1).upcase,
+        admin_suggest_path(suggest), method: "PUT", class: "btn btn-custom btn-info" %>
+    <% end %>
+  </td>
+</tr>
