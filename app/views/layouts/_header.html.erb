@@ -1,5 +1,5 @@
 <head>
-  <nav class="navbar navbar-inverse">
+  <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
       <div class="navbar-header">
         <%= link_to t("name_website"), root_path, id:"logo" %>
@@ -10,11 +10,14 @@
             <span class="glyphicon glyphicon-home"></span>
             <%= t "home" %>
           <% end %>
-        </li>
+        </li >
         <li>
-          <%= link_to root_path do %>
+          <%= link_to carts_path do %>
             <span class="glyphicon glyphicon-shopping-cart"></span>
-            <%= t "product" %>
+            <span class="product-count" id="count_cart" >
+              <%= count_product_of_cart %>
+            </span>
+            <%= t "cart" %>
           <% end %>
         </li>
         <li>
@@ -36,20 +39,23 @@
           <% end %>
         </li>
         <% if loged? %>
-        <li class="dropdown">
+        <li class="dropdown" id="loged" data-id="true">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">
             <span class="glyphicon glyphicon-cog"></span>
             <%= t "profile" %>
             <span class="caret"></span>
           </a>
           <ul class="dropdown-menu">
+            <% if admin? %>
+            <li><%= link_to t("admin_panel"), admin_admins_path %></li>
+            <% end %>
             <li><%= link_to t("profile"), user_path(current_user) %></li>
-            <li><%= link_to t("no_name"), edit_user_path(current_user) %></li>
+            <li><%= link_to t("manange_order"), orders_path %></li>
             <li><%= link_to t("log_out"), logout_path %></li>
           </ul>
         </li>
         <% else %>
-        <li>
+        <li id="loged" data-id="false">
           <%= link_to new_user_path do %>
             <span class="glyphicon glyphicon-user"></span>
             <%= t "signup" %>

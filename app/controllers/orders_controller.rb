@@ -1,0 +1,77 @@
+class OrdersController < ApplicationController
+
+  before_action :function_logged_in_use, only: [:index, :show]
+
+  def update
+    @order = Order.find_by id: params[:id]
+    if @order.update_attributes order_params
+      flash[:success] = t "update_success"
+    else
+      flash.now[:danger] = t "update_fail"
+    end
+    redirect_to :back
+  end
+
+  def create
+    @order = Order.new order_params
+    @order.delivery_day = DateTime.now + Settings.delivery_day
+    @order.user_id = current_user.id
+    @carts = session[:cart]
+    @order.transaction do
+      if @order.save!
+        @carts.each do |c|
+          @orderdetail = @order.order_details.new product_id: c["product_id"],
+            quantity: c["quantity"], note: c["note"], price: c["price"]
+          @orderdetail.transaction do
+            raise t "view.orders.create.trans_fail" unless @orderdetail.save!
+          end
+        end
+        OrderUserMailer.order_to_user(current_user, @carts, @order).deliver
+        session[:cart].clear
+        flash[:success] = t "view.orders.create.success_msg"
+        redirect_to root_path
+      else
+        redirect_to :back
+      end
+    end
+  end
+
+  def index
+    @orders = current_user.orders.paginate page: params[:page],
+      per_page: Settings.maximum_per_page
+  end
+
+  def show
+    @order = Order.find_by id: params[:id]
+    if @order.nil?
+      flash[:danger] = t "find_error"
+      redirect_to admin_orders_path
+    else
+      @order_details = @order.order_details.paginate page: params[:page],
+      per_page: Settings.maximum_per_page
+    end
+  end
+
+  def destroy
+    @order = Order.find_by id: params[:id]
+    if @order.nil?
+      flash[:danger] = t "find_error"
+      redirect_to admin_orders_path
+    else
+      @order.status = "cancel"
+      if @order.save
+        flash[:success] = t "cancel_order_success"
+      else
+        flash[:danger] = t "cancel_order_fail"
+      end
+    end
+    redirect_to orders_path
+  end
+
+  private
+
+  def order_params
+    params.require(:order).permit :address, :phone, :note,
+      :status, :discount, :user_id
+  end
+end

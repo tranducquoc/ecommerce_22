@@ -1,0 +1,2 @@
+class Voicher < ApplicationRecord
+end

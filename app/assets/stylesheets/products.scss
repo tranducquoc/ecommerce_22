@@ -1,0 +1,38 @@
+.form_user {
+  .format_form {
+    border: dashed 1px #84c52c;
+    border-radius: 30px;
+    border-top-style: none;
+    text-align: justify;
+    .home_title {
+      background-color: #f1f6f8;
+      .title {
+        color: #84c52c;
+        padding: 10px;
+        font-size: 20px;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+    }
+    .list_order_content {
+      border: dashed 1px orange;
+      border-radius: 20px;
+    }
+  }
+}
+.date_form {
+  width: 60px;
+  height: 60px;
+  border: dashed 1px green;
+  margin: 5px 10px;
+  border-radius: 10px;
+}
+.order_item {
+  width: 60px;
+}
+.float_none {
+  float: none !important;
+}
+.left {
+  float: left;
+}

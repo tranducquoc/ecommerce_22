@@ -1,0 +1,119 @@
+<div id=":lj" class="ii gt adP adO"><div id=":li" class="a3s aXjCH m15b5bde763192477"><u></u>
+  <div>
+    <div class="m_8745720239803315847container">
+      <div class="m_8745720239803315847content">
+        <h1 align="center" style="color: #219e05;"><span><img src="https://image.ibb.co/f8HgFk/Untitled_1.jpg" style="height: 150px;" ></span></h1>
+        <p align="center" style="color: #70bb14;"><%= t "mail_thank" %></p>
+        <h2 align="center"><%= t "order_details" %></h2>
+        <table align="center">
+          <tbody>
+            <tr>
+              <th scope="row">
+                <div align="right"><%= t "id" %>:</div>
+              </th>
+              <td>
+                <div align="left" style="font-weight: bold;">
+                  <%= t("order_id", id: @order.id) %>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">
+                <div align="right"><%= t "name" %>:</div>
+              </th>
+              <td>
+                <div align="left"><%= @user.name %></div>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">
+                <div align="right"><%= t "phone" %>:</div>
+              </th>
+              <td><%= @order.phone %></td>
+            </tr>
+            <tr>
+              <th scope="row">
+                <div align="right"><%= t "address" %>:</div>
+              </th>
+              <td>
+                <div align="left"><%= @order.address %></div>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">
+                <div align="right"><%= t "order_day" %>:</div>
+              </th>
+              <td>
+                <div align="left"><%= l @order.created_at,
+                  format: :dmy_hms_concise  %></div>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">
+                <div align="right"><%= t "delivery_day-expected" %>:</div>
+              </th>
+              <td>
+                <div align="left"><%= l @order.delivery_day,
+                  format: :date_month_year_concise  %></div>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">
+                <div align="right"><%= t "money" %>:</div>
+              </th>
+              <td>
+                <div align="left">
+                  <%= number_to_currency OrderLib.total_money(@order) %>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">
+                <div align="right"><%= t "discount" %>:</div>
+              </th>
+              <td>
+                <div align="left">
+                  <%= number_to_currency OrderLib.calculate_discount(@order) %>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">
+                <div align="right"><%= t "Total" %>:</div>
+              </th>
+              <td>
+                <div align="left" style="font-weight: bold;">
+                  <%= number_to_currency OrderLib.total_money_after_discount(@order) %>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">
+                <div align="right"><%= t "Status" %>:</div>
+              </th>
+              <td>
+                <div align="left" style="font-weight: bold;
+                  font-variant: small-caps; font-size: 20px;"><%= @order.status %></div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <h2 align="center"><%= t "list_product" %></h2>
+        <table border="1" align="center">
+          <tbody>
+            <tr>
+              <th scope="col"><%= t "product_id" %></th>
+              <th scope="col"><%= t "name" %></th>
+              <th scope="col"><%= t "price" %></th>
+              <th scope="col"><%= t "quantity" %></th>
+              <th scope="col"><%= t "total_money" %></th>
+            </tr>
+            <%= render partial: "item", collection: @carts, as: :cart %>
+          </tbody>
+        </table>
+        <p align="center"><%= t "end_email" %></p>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -63,11 +63,16 @@
           </tr>
           <tr>
             <td><%= t "order_status" %></td>
-            <td><%= @order.status %></td>
+            <td class="font_status"><%= @order.status %></td>
           </tr>
         </tbody>
         <div>
-          <td><%= link_to "#{@order.status}", "#", class: "btn btn-custom btn-success" %></td>
+          <td>
+          <%= link_to "#{next_button Order.statuses[@order.status]}",
+            admin_order_path(@order.id), method: :PUT,
+            class: "btn btn-custom btn-success btn_next_order",
+            data: {status: "#{Order.statuses[@order.status]}"} %>
+          </td>
         </div>
       </table>
     </div>
@@ -110,9 +115,8 @@
       <table class="table table-bordered" id="datatable">
         <thead>
           <tr class="title_table">
-            <th class="title_cell"><%= t "id_product" %></th>
+            <th class="title_cell"><%= t "id" %></th>
             <th class="title_cell"><%= t "name" %></th>
-            <th class="title_cell"><%= t "note" %></th>
             <th class="title_cell"><%= t "quatity" %></th>
             <th class="title_cell"><%= t "price" %></th>
             <th class="title_cell"><%= t "money" %></th>
@@ -126,5 +130,4 @@
       </table>
     </section>
   </div>
-  <div class="pagrinate"><%= will_paginate @orders_details %></div>
 </div>

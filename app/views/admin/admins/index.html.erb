@@ -1,0 +1,92 @@
+<% provide :title, t("general") %>
+<% provide :page_header, t("general") %>
+<div class="row">
+  <div class="col-lg-3 col-md-6">
+  <div class="panel panel-user">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-xs-3">
+            <i class="fa fa-users fa-5x"></i>
+          </div>
+          <div class="col-xs-9 text-right">
+            <div class="huge"><%= @general[:user_today] %></div>
+            <div><%= t "user_today" %></div>
+          </div>
+        </div>
+      </div>
+      <%= link_to admin_users_path do %>
+        <div class="panel-footer">
+          <span class="pull-left"><%= t "manage" %></span>
+          <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+          <div class="clearfix"></div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-lg-3 col-md-6">
+    <div class="panel panel-product">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-xs-3">
+            <i class="fa fa-shopping-cart fa-5x"></i>
+          </div>
+          <div class="col-xs-9 text-right">
+            <div class="huge"><%= @general[:product_total] %></div>
+            <div><%= t "product_total" %></div>
+          </div>
+        </div>
+      </div>
+      <%= link_to admin_products_path do %>
+        <div class="panel-footer">
+          <span class="pull-left"><%= t "manage" %></span>
+          <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+          <div class="clearfix"></div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-lg-3 col-md-6">
+    <div class="panel panel-order">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-xs-3">
+            <i class="fa fa-cart-plus fa-5x"></i>
+          </div>
+          <div class="col-xs-9 text-right">
+            <div class="huge"><%= @general[:order_today] %></div>
+            <div><%= t "order_today" %></div>
+          </div>
+        </div>
+      </div>
+      <%= link_to admin_orders_path do %>
+        <div class="panel-footer">
+          <span class="pull-left"><%= t "manage" %></span>
+          <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+          <div class="clearfix"></div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-lg-3 col-md-6">
+    <div class="panel panel-suggest">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-xs-3">
+            <i class="fa fa-folder-o fa-5x"></i>
+          </div>
+          <div class="col-xs-9 text-right">
+            <div class="huge"><%= @general[:suggest_today] %></div>
+            <div><%= t "suggest_today" %></div>
+          </div>
+        </div>
+      </div>
+      <%= link_to "#" do %>
+        <div class="panel-footer">
+          <span class="pull-left"><%= t "manage" %></span>
+          <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+          <div class="clearfix"></div>
+        <% end %>
+      </a>
+    </div>
+  </div>
+</div>

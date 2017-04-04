@@ -1,0 +1,28 @@
+<% provide :title, t("order") %>
+<div class="row form_user">
+  <div class="top_products border_top_product form_center">
+    <div class="home_title">
+      <h2 class="title"><%= t "list_order" %></h2>
+    </div>
+    <div>
+      <section class="section_table table_form">
+        <table class="table table-bordered" id="datatable">
+          <thead>
+            <tr class="title_table">
+              <th class="title_cell"><%= t "id" %></th>
+              <th class="title_cell"><%= t "order_day" %></th>
+              <th class="title_cell"><%= t "delivery_day" %></th>
+              <th class="title_cell"><%= t "total_price" %></th>
+              <th class="title_cell"><%= t "status" %></th>
+              <th class="title_cell"><%= t "funtion" %></th>
+            </tr>
+          </thead>
+          <tbody>
+            <%= render partial: "table_list_orders", collection: @orders, as: :order %>
+          </tbody>
+        </table>
+      </section>
+      <div class="pagrinate"><%= will_paginate @orders %></div>
+    </div>
+  </div>
+</div>

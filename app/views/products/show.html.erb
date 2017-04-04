@@ -1,0 +1,55 @@
+<% provide :title, t("home") %>
+<%= render "layouts/panel_UI" %>
+<%= render "layouts/sidebar_left_UI" %>
+<div class="row">
+  <div class="col-sm-9 top_products border_top_product">
+    <div class="home_title">
+      <h2 class="title"><%= t "products_detail" %></h2>
+    </div>
+    <div class="col-sm-4">
+      <div class="image">
+        <%= image_tag @product.image, class: "image_product" %>
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <div class="product_title">
+        <h2><%= "#{@product.name} (No.#{@product.id})" %></h2>
+        <h3><%= "rate" %></h3>
+        <h2 class="price_show"><%= number_to_currency @product.price %></h2>
+        <div>
+          <%= link_to t("add_to_cart"), carts_path(product_id: @product.id,
+            product_name: @product.name, product_image: @product.image , note: "",
+            quantity: 1, price: @product.price), method: :post,
+            class: "btn btn_custom btn-success btn_cart add_to_cart", remote: true %>
+          <%= link_to t("buy_now"), payments_path,
+            class: "btn btn-custom btn-danger display_not" %>
+        </div>
+      </div>
+      <br>
+      <div>
+        <div class="fb-like" data-href="<%= request.original_url %>"
+          data-layout="standard" data-action="like" data-size="small"
+          data-show-faces="true" data-share="true">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-9 top_products border_top_product form_right">
+    <div class="info_title">
+      <%= t "info_product" %>
+    </div>
+    <div>
+      <%= @product.info %>
+    </div>
+  </div>
+  <div class="col-sm-9 top_products border_top_product form_right">
+    <div class="info_title">
+      <%= t "comment" %>
+    </div>
+    <div>
+      <div class="fb-comments" data-href="<%= request.original_url %>"
+        data-width="100%" data-numposts="5">
+      </div>
+    </div>
+  </div>
+</div>

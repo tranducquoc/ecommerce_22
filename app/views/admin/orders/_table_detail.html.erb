@@ -8,7 +8,8 @@
     <%= number_to_currency OrderLib.calculate_product(order_detail) %>
   </td>
   <td class="item">
-    <%= link_to t("delete"), "#",
-      class: "btn btn-custom btn-danger", data:{toggle: "modal"} %>
+    <%= link_to t("delete"), admin_order_detail_path(order_detail.id), method: :delete,
+      data: {confirm: t("are_you_sure")},
+      class: "btn btn-custom btn-danger btn_delete_order_detail_admin" %>
   </td>
 </tr>

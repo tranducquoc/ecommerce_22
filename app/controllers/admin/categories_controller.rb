@@ -1,6 +1,6 @@
 class Admin::CategoriesController < ApplicationController
   layout "admin_layout"
-
+  before_action :check_admin
   before_action :load_categorie, only: [:destroy, :update]
 
   def new

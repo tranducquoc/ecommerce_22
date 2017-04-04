@@ -23,7 +23,7 @@
   float: left;
   margin-right: 10px;
   font-size: 27px;
-  color: white;
+  color: #84c52c;
   text-transform: uppercase;
   letter-spacing: -1px;
   padding-top: 9px;
@@ -73,9 +73,6 @@ img {
 .menu_son {
   display: none;
 }
-body {
-  padding : 10px ;
-}
 #exTab1 .tab-content {
   color : black;
   background-color: #ECEEF0;
@@ -97,11 +94,93 @@ body {
   background-color: #428bca;
   padding : 5px 15px;
 }
+.padtop {
+  padding-top: 10px;
+}
+.table_form {
+  padding: 0px 15px;
+}
+.button_lock {
+  pointer-events: none;
+  cursor: default;
+  background-color: gray;
+  border-color: gray;
+}
 .item {
   vertical-align: middle !important;
 }
+.error_form {
+  color: red;
+  text-align: center;
+  padding-top: 50px;
+}
+.size_field {
+  width: 80px;
+  margin: 0 auto;
+}
+.note_order {
+  height: 80px !important;
+  width: 150px;
+  resize: none;
+}
+.form_right {
+  float: right;
+}
+.not_pading_top {
+  padding-top: 0 !important;
+  margin: 10px;
+}
+.error_font {
+  margin: 0 auto;
+  size: 20px;
+  color: red;
+}
+.font_right {
+  text-align: right;
+}
+.btn_finish_order {
+  width: 150px;
+}
+.font_payment {
+  font-size: 20px;
+  color: orange;
+}
+.display_none {
+  display: none;
+}
+.font_status {
+  font-size: 25px;
+  font-variant: small-caps;
+  font-weight: bold;
+  color: orange;
+}
+.font_no_product {
+  color: orange;
+  text-align: center;
+}
+.panel-user {
+  background-color: orange;
+}
+.panel-product {
+  background-color: #84c52c;
+}
+.panel-order {
+  background-color: #987cec;
+}
+.panel-suggest {
+  background-color: #e8ea4c;
+}
+.huge {
+  font-size: 30px;
+}
 .money {
   vertical-align: middle !important;
-  text-align: right;
-  font-weight: bold;
+  color: orange;
+  font-style: 18px;
+}
+.div_error {
+  padding-top: 60px;
+}
+.display_not {
+  display: inline-block !important;
 }

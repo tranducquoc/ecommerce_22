@@ -1,0 +1,124 @@
+<% provide :title, t("payment") %>
+<%= form_for @order, html: {multipart: true}  do |o| %>
+  <div class="row">
+    <div class="col-sm-5">
+      <div class="top_products border_top_product form_center">
+        <div class="home_title">
+          <h2 class="title"><%= t "delivery_information" %></h2>
+        </div>
+        <div class="panel-body">
+          <table class="table table-user-information">
+          <%= render "shared/error_messages", object: o.object %>
+            <tbody>
+              <tr>
+                <td><%= t "name" %></td>
+                <td><%= current_user.name  %></td>
+              </tr>
+              <tr>
+                <td><%= t "address" %></td>
+                <td><%= o.text_field :address, class: "form-control" %></td>
+              </tr>
+              <tr>
+                <td><%= t "phone" %></td>
+                <td><%= o.phone_field :phone, class: "form-control" %></td>
+              </tr>
+              <tr>
+                <td><%= t "note" %></td>
+                <td><%= o.text_area :note, class: "form-control" %></td>
+              </tr>
+              <tr class="display_none" >
+                <td><%= t "note" %></td>
+                <td><%= o.text_field :discount, class: "form-control",
+                  id: "field_discount" %></td>
+              </tr>
+              <tr>
+                <td><%= t "voicher" %></td>
+                <td>
+                  <div><%= text_field_tag "", "", class: "form-control",
+                    id: "text_discount" %>
+                  </div>
+                  <div class="form_right"><%= link_to t("check"), "javascript:void(0)",
+                    class: "btn btn-custom btn-info btn_check_discout" %>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <%= link_to t("using_profile"), "#",
+                  class: "btn btn-custom btn-success btn_using_profile",
+                    data: {user: current_user} %>
+                </td>
+                <td>
+                  <%= o.submit t("finish"),
+                    class: "btn btn-custom btn-info btn_finish_order"  %>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-7">
+      <div class="top_products border_top_product form_center">
+        <div class="home_title">
+          <h2 class="title"><%= t "delivery_information" %></h2>
+        </div>
+        <div class="panel-body">
+          <table class="table table-user-information">
+            <tbody>
+              <tr>
+                <td><%= t "number_categorie" %></td>
+                <td class="font_payment"><%= @carts.size %></td>
+              </tr>
+              <tr>
+                <td><%= t "number_product" %></td>
+                <td class="font_payment"><%= OrderLib.number_product @carts %></td>
+              </tr>
+              <tr>
+                <td><%= t "total_money" %></td>
+                <td class="font_payment" id="total_money"
+                  data-money="<%= OrderLib.toatl_money_cart @carts %>">
+                  <%= number_to_currency OrderLib.toatl_money_cart(@carts) %>
+                </td>
+              </tr>
+              <tr>
+                <td><%= t "discount" %></td>
+                <td class="font_payment" id="show_discount"><%= t "num_discount" %></td>
+              </tr>
+              <tr>
+                <td><%= t "total_payment" %></td>
+                <td class="font_payment" id="show_total_payment">
+                  <%= number_to_currency OrderLib.toatl_money_cart(@carts) %>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="top_products border_top_product form_center">
+        <div class="home_title">
+          <h2 class="title"><%= t "list_items" %></h2>
+        </div>
+        <div>
+          <section class="section_table table_form">
+            <table class="table table-bordered" id="datatable">
+              <thead>
+                <tr class="title_table">
+                  <th class="title_cell"><%= t "id" %></th>
+                  <th class="title_cell"><%= t "name" %></th>
+                  <th class="title_cell"><%= t "note" %></th>
+                  <th class="title_cell"><%= t "price" %></th>
+                  <th class="title_cell"><%= t "quantity" %></th>
+                  <th class="title_cell"><%= t "total" %></th>
+                </tr>
+              </thead>
+              <tbody>
+                <%= render partial: "cart_item", collection: @carts, as: :cart %>
+              </tbody>
+            </table>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

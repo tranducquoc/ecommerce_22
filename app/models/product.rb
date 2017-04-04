@@ -17,6 +17,14 @@ class Product < ApplicationRecord
 
   delegate :name, to: :categorie, prefix: true
 
+  scope :top_new_products, -> {order("created_at desc")
+    .limit(Settings.maximum_top_products)}
+  scope :top_order_products, -> {
+    joins(:order_details).select("products.*,
+    SUM(order_details.quantity) AS sum
+    ").group("products.id").order("sum desc")
+    .limit(Settings.maximum_top_products)}
+
   def self.import file
     spreadsheet = Roo::Spreadsheet.open(file.path)
     header = spreadsheet.row Settings.number_of_import_file
