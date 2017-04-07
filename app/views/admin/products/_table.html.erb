@@ -1,7 +1,7 @@
 <tr class="content_table">
   <td class="item"><%= product.id %></td>
   <td class="item"><%= product.name %></td>
-  <td class="item"><%= product.info %></td>
+  <td class="item"><%= convert_info product.info %></td>
   <td class="item"><%= l product.created_at, format: :date_month_year_concise %></td>
   <td class="money"><%= number_to_currency product.price %></td>
   <td class="item"><%= product.categorie_name %></td>

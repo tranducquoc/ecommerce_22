@@ -1,0 +1,12 @@
+<tr class="content_table">
+  <td class="item"><%= order.id %></td>
+  <td class="item"><%= l order.delivery_day, format: :date_month_year_concise %></td>
+  <td class="item"><%= l order.created_at, format: :dmy_hms_concise %></td>
+  <td class="item"><%= order.status %></td>
+  <td class="item">
+    <%= link_to t("view"), "#modal#{order.id}",
+      class: "btn btn-custom btn-success", data:{toggle: "modal"} %>
+    <%= link_to t("detail"), admin_order_path(order),
+      class: "btn btn-custom btn-success", data:{toggle: "modal"} %>
+  </td>
+</tr>

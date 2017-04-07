@@ -1,0 +1,130 @@
+<% provide :title, t("manage_orders") %>
+<% provide :page_header, t("show_order") %>
+<div class="col-md-12">
+  <div class="row">
+    <div class=" col-md-6">
+      <table class="table table-user-information">
+        <h3><%= t "info_order" %></h3>
+        <tbody>
+          <tr>
+            <td><%= t "id_order" %></td>
+            <td><%= @order.id %></td>
+          </tr>
+          <tr>
+            <td><%= t "receive_phone" %></td>
+            <td><%= @order.phone %></td>
+          </tr>
+          <tr>
+            <td><%= t "receive_address" %></td>
+            <td><%= @order.address %></td>
+          </tr>
+          <tr>
+            <td><%= t "created" %></td>
+            <td><%= l @order.created_at, format: :dmy_hms_concise %>
+            </td>
+          </tr>
+          <tr>
+            <td><%= t "delivery_day" %></td>
+            <td><%= l @order.delivery_day, format: :date_month_year_concise %>
+            </td>
+          </tr>
+          <tr>
+            <td><%= t "note_order" %></td>
+            <td><%= @order.note %>
+            </td>
+          </tr>
+          <tr>
+            <td><%= t "count_products" %></td>
+            <td><%= @order.order_details.size %>
+            </td>
+          </tr>
+          <tr>
+            <td><%= t "count_categories" %></td>
+            <td><%= @order.order_details.sum :quantity %></td>
+          </tr>
+          <tr>
+            <td><%= t "sum_money" %></td>
+            <td><%= number_to_currency OrderLib.total_money(@order) %></td>
+          </tr>
+          <tr>
+            <td><%= t "discount" %></td>
+            <td>
+              <%= t("number.discount", discount: @order.discount) %>
+              <%= " = " << number_to_currency(OrderLib.calculate_discount(@order)) %>
+            </td>
+          </tr>
+          <tr>
+            <td><%= t "total_price" %></td>
+            <td>
+              <h4>
+                <%= number_to_currency OrderLib.total_money_after_discount(@order) %>
+              </h4>
+            </td>
+          </tr>
+          <tr>
+            <td><%= t "order_status" %></td>
+            <td><%= @order.status %></td>
+          </tr>
+        </tbody>
+        <div>
+          <td><%= link_to "#{@order.status}", "#", class: "btn btn-custom btn-success" %></td>
+        </div>
+      </table>
+    </div>
+    <div class=" col-md-6">
+      <table class="table table-user-information">
+        <h3><%= t "info_user" %></h3>
+        <tbody>
+          <tr>
+            <td><%= t "id_user" %></td>
+            <td><%= @order.user_id %></td>
+          </tr>
+          <tr>
+            <td><%= t "user_name" %></td>
+            <td><%= @order.user_name %></td>
+          </tr>
+          <tr>
+            <td><%= t "user_email" %></td>
+            <td><%= @order.user_email %></td>
+          </tr>
+          <tr>
+            <td><%= t "user_phone" %></td>
+            <td><%= @order.user_phone %></td>
+          </tr>
+          <tr>
+            <td><%= t "user_address" %></td>
+            <td><%= @order.user_address %></td>
+          </tr>
+          <tr>
+            <td><%= t "regiter_day" %></td>
+            <td><%= l @order.user_created_at, format: :dmy_hms_concise %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading"><%= t "all_order_details" %></div>
+    <section class="section_table">
+      <table class="table table-bordered" id="datatable">
+        <thead>
+          <tr class="title_table">
+            <th class="title_cell"><%= t "id_product" %></th>
+            <th class="title_cell"><%= t "name" %></th>
+            <th class="title_cell"><%= t "note" %></th>
+            <th class="title_cell"><%= t "quatity" %></th>
+            <th class="title_cell"><%= t "price" %></th>
+            <th class="title_cell"><%= t "money" %></th>
+            <th class="title_cell"><%= t "funtion" %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render partial: "table_detail", collection: @order_details,
+          as: :order_detail %>
+        </tbody>
+      </table>
+    </section>
+  </div>
+  <div class="pagrinate"><%= will_paginate @orders_details %></div>
+</div>

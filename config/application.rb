@@ -11,5 +11,6 @@ module Ecommerce22
   class Application < Rails::Application
     config.i18n.default_locale = :en
     config.i18n.available_locales = [:vi, :en]
+    config.eager_load_paths << Rails.root.join("lib")
   end
 end
