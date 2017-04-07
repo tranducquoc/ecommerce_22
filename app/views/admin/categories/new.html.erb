@@ -2,7 +2,8 @@
 <% provide :page_header, t("add_categories") %>
 <div class="find_image">
   <div class="col-md-8">
-    <%= form_for @categorie, html: {multipart: true} do |f| %>
+    <%= form_for [:admin, @categorie],
+      html: {multipart: true} do |f| %>
       <%= render "shared/error_messages", object: f.object %>
       <%= f.label :name, t("name") %>
       <%= f.text_field :name, class: "form-control" %>
@@ -11,41 +12,27 @@
           class: "change_picture" %>
       </span>
       <br>
-      <%= f.submit t("create_new_categorie"), class: "btn btn-primary" %>
+      <%= f.submit t("create_new_categorie"), class: "btn btn-custom btn-success" %>
     <% end %>
     <br>
     <div class="panel panel-default">
-      <div class="panel-heading"><%= t "all_categorie" %>
-      </div>
-      <table class="table table-bordered" id="datatable">
-        <thead>
-          <tr>
-            <th style="">
-              <div class="th-inner sortable"><%= t "id" %></div>
-              <div class="fht-cell"></div>
-            </th>
-            <th style="">
-              <div class="th-inner sortable"><%= t "name" %></div>
-              <div class="fht-cell"></div>
-            </th>
-            <th style="">
-              <div class="th-inner sortable"><%= t "added_day" %></div>
-              <div class="fht-cell"></div>
-            </th>
-            <th style="">
-              <div class="th-inner sortable"><%= t "image" %></div>
-              <div class="fht-cell"></div>
-            </th>
-            <th style="">
-              <div class="th-inner sortable"><%= t "funtion" %></div>
-              <div class="fht-cell"></div>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <%= render partial: "table", collection: @categories, as: :categorie %>
-        </tbody>
-      </table>
+      <div class="panel-heading"><%= t "all_categorie" %></div>
+      <section class="section_table">
+        <table class="table table-bordered" id="datatable">
+          <thead>
+            <tr class="title_table">
+              <th class="title_cell"><%= t "id" %></th>
+              <th class="title_cell"><%= t "name" %></th>
+              <th class="title_cell"><%= t "added_day" %></th>
+              <th class="title_cell"><%= t "image" %></th>
+              <th class="title_cell"><%= t "funtion" %></th>
+            </tr>
+          </thead>
+          <tbody>
+            <%= render partial: "table", collection: @categories, as: :categorie %>
+          </tbody>
+        </table>
+      </section>
     </div>
     <div class="pagrinate"><%= will_paginate @categories %></div>
   </div>

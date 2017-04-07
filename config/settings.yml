@@ -10,3 +10,4 @@ maximum_quatity: 100000
 minimum_quatily: 1
 maximum_update_image: 5
 maximum_per_page: 10
+number_of_import_file: 1

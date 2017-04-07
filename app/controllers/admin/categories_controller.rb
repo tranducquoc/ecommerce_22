@@ -1,4 +1,4 @@
-class CategoriesController < ApplicationController
+class Admin::CategoriesController < ApplicationController
   layout "admin_layout"
 
   before_action :load_categorie, only: [:destroy, :update]
@@ -13,16 +13,18 @@ class CategoriesController < ApplicationController
     @categorie = Categorie.new categorie_params
     if @categorie.save
       flash[:success] = t "created_categorie"
-      redirect_to new_category_path
+      redirect_to new_admin_category_path
     else
-      @categories = Categorie.all
+      @categories = Categorie.paginate page: params[:page],
+        per_page: Settings.maximum_per_page
       render :new
     end
   end
 
   def destroy
     if @categorie.products.size > 0
-      flash[:danger] = t "delete_categorie_error"
+      flash[:danger] = t("delete_categorie_error",
+        number: @categorie.products.size)
     else
       if @categorie.destroy
         flash[:success] = t "delete_categorie_success"
@@ -30,7 +32,7 @@ class CategoriesController < ApplicationController
         flash[:danger] = t "delete_categorie_fail"
       end
     end
-    redirect_to new_category_path
+    redirect_to new_admin_category_path
   end
 
   def update
@@ -39,7 +41,7 @@ class CategoriesController < ApplicationController
     else
       flash[:danger] = t "update_categorie_fail"
     end
-    redirect_to new_category_path
+    redirect_to new_admin_category_path
   end
 
   private
@@ -48,7 +50,7 @@ class CategoriesController < ApplicationController
     @categorie = Categorie.find_by id: params[:id]
     return if @categorie
     flash[:danger] = t "find_error"
-    redirect_to new_category_path
+    redirect_to new_admin_category_path
   end
 
   def categorie_params

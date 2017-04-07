@@ -97,3 +97,11 @@ body {
   background-color: #428bca;
   padding : 5px 15px;
 }
+.item {
+  vertical-align: middle !important;
+}
+.money {
+  vertical-align: middle !important;
+  text-align: right;
+  font-weight: bold;
+}

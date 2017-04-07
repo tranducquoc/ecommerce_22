@@ -15,9 +15,11 @@ class Product < ApplicationRecord
   validates :categorie_id, presence:true
   validate :image_size
 
+  delegate :name, to: :categorie, prefix: true
+
   def self.import file
     spreadsheet = Roo::Spreadsheet.open(file.path)
-    header = spreadsheet.row 1
+    header = spreadsheet.row Settings.number_of_import_file
     (2..spreadsheet.last_row).each do |i|
       row = Hash[[header, spreadsheet.row(i)].transpose]
       product = find_by(id: row["id"]) || new

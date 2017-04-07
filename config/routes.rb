@@ -20,8 +20,10 @@ Rails.application.routes.draw do
     resources :rate
     resources :suggest
     resources :cart
+    resources :orders
 
     namespace :admin do
+      resources :orders
       resources :rate
       resources :suggest
       resources :cart
