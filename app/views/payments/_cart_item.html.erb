@@ -1,0 +1,10 @@
+<tr class="content_table" >
+  <td class="item"><%= cart["product_id"] %></td>
+  <td class="item"><%= cart["product_name"] %></td>
+  <td class="item"><%= cart["note"] %></td>
+  <td class="item font_right"><%= number_to_currency cart["price"] %></td>
+  <td class="item"><%= cart["quantity"] %></td>
+  <td class="item price font_right">
+    <%= number_to_currency OrderLib.total(cart["price"].to_i, cart["quantity"].to_i) %>
+  </td>
+</tr>

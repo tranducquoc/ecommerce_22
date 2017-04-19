@@ -42,13 +42,21 @@ Rails.application.configure do
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
 
-  # Use the lowest log level to ensure availability of diagnostic information
+  # Use the lowest log level to ensure availability of diagnostic informatio
   # when problems arise.
   config.log_level = :debug
 
   # Prepend all log lines with the following tags.
   config.log_tags = [ :request_id ]
-
+  config.action_mailer.default_url_options = {:host => "localhost:3000"}
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+  address:              "smtp.gmail.com",
+  port:                 587,
+  user_name:            "fresh.vegestable@gmail.com",
+  password:             "Nhoanh125",
+  authentication:       "plain",
+  enable_starttls_auto: true  }
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
 

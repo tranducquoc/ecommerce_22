@@ -1,5 +1,6 @@
 class Admin::ProductsController < ApplicationController
   layout "admin_layout"
+  before_action :check_admin
 
   before_action :load_product, only: [:destroy, :update]
 
@@ -45,7 +46,7 @@ class Admin::ProductsController < ApplicationController
     else
       flash[:danger] = t "update_product_fail"
     end
-    redirect_to admin_products_path
+    redirect_to :back
   end
 
   private

@@ -2,10 +2,13 @@
   <td class="item"><%= order.id %></td>
   <td class="item"><%= l order.delivery_day, format: :date_month_year_concise %></td>
   <td class="item"><%= l order.created_at, format: :dmy_hms_concise %></td>
-  <td class="item"><%= order.status %></td>
+  <td class="item price">
+    <%= number_to_currency OrderLib.total_money_after_discount(order) %>
+  </td>
+  <td class="item font_status"><%= order.status %></td>
   <td class="item">
     <%= link_to t("view"), "#modal#{order.id}",
-      class: "btn btn-custom btn-success", data:{toggle: "modal"} %>
+      class: "btn btn-custom btn-info", data:{toggle: "modal"} %>
     <%= link_to t("detail"), admin_order_path(order),
       class: "btn btn-custom btn-success", data:{toggle: "modal"} %>
   </td>

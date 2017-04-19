@@ -1,7 +1,4 @@
 class SessionsController < ApplicationController
-  def new
-  end
-
   def admin_login
     admin = User.find_by(email: params[:session][:email].downcase)
     if admin && admin.authenticate(params[:session][:password]) && admin.is_admin?

@@ -7,4 +7,8 @@ module ApplicationHelper
       page_title + " | " + base_title
     end
   end
+
+  def count_product_of_cart
+    session[:cart].size
+  end
 end

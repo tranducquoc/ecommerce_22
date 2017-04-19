@@ -1,9 +1,9 @@
 class User < ApplicationRecord
   has_many :orders
-  has_many :comment, dependent: :destroy
-  has_many :rate, dependent: :destroy
-  has_many :suggest, dependent: :destroy
-  has_many :cart, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :rates, dependent: :destroy
+  has_many :suggests, dependent: :destroy
+  has_many :carts, dependent: :destroy
 
   before_save :downcase_email
 
@@ -19,6 +19,8 @@ class User < ApplicationRecord
   validates :phone, presence: true, numericality: {only_integer: true},
     length: {in: Settings.minimum_phone..Settings.maximum_phone}
   validates :password, presence: true, length: {minimum: Settings.minimum_password}
+
+  scope :user_regit_today, -> {where("DATE(created_at) = ?", Date.today)}
 
   class << self
     def digest string

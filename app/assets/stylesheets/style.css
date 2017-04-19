@@ -20,8 +20,6 @@ ul {
   background-color: #f1f6f8;
   border-right: 1px solid #dddddd;
   border-bottom: 1px solid #dddddd;
-  max-height: 360px;
-  height: 360px;
   padding: 0;
 }
 .section_products .catalog .catalog_list .catalog_item {
@@ -105,14 +103,17 @@ ul {
   color: #7b7b7b;
   padding-left: 2px;
 }
-.section_products .top_products .product_list .product_item .content .product_des .price {
+.price {
   color: #ff8401;
   font-size: 18px;
   padding-left: 2px;
+  text-align:center;
 }
 
 .section_table .table {
   text-align: center;
+  padding: 0px 15px;
+
 }
 .section_table .table .title_table .title_cell {
   text-align: center;
@@ -124,14 +125,115 @@ ul {
   width: 130px;
   height: 150px;
   object-fit: cover;
+  vertical-align: middle;
 }
 .btn-custom {
   display: block;
-  width: 70%;
   margin: 10px auto;
 }
-
+.navbar-inverse {
+  background-color: #f1f6f8;
+  border: orange;
+}
+.navbar-inverse .navbar-nav > li > a {
+  color: orange;
+}
 .copyright {
   margin: 40px 0;
   background-color: #dddddd;
+}
+.product_content {
+  border: dashed 1px orange;
+}
+.border_top_product {
+  border: dashed 1px #84c52c;
+  border-radius: 30px;
+  border-top-style: none;
+  text-align: justify;
+}
+.image_product {
+  height: 300px;
+  width: 250px;
+  object-fit: cover;
+  border: double orange;
+  border-radius: 20px;
+}
+.product_title {
+  color: #2F4F4F;
+}
+.center{
+  width: 130px;
+  margin: 10px 40px;
+}
+.input_quantity {
+  font-size: 15px;
+  font-weight: bold;
+}
+.info_product {
+  border: dashed 1px #84c52c;
+  border-radius: 10px;
+  border-top-style: none;
+}
+.info_title {
+  background-color: #f1f6f8;
+  color: #84c52c;
+  padding: 2px;
+  font-size: 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-top: 10px;
+}
+.fb-comments {
+  data-with
+}
+.price_show {
+  color: #ff8401;
+  padding-left: 10px;
+}
+.product-count {
+  background: #84c52c;
+  top: 7px;
+  right: 0;
+  font-size: 12px;
+  padding: 0;
+  border-radius: 50%;
+  color: #fff;
+  display: inline-block;
+  height: 18px;
+  width: 18px;
+  position: absolute;
+  text-align: center;
+}
+.form_user {
+  padding-top: 40px;
+}
+.center_form {
+  float: none !important;
+  margin: 0 auto;
+}
+.button_center {
+  margin: 0 auto;
+  display: block;
+  width: 100px;
+  padding-bottom: 15px;
+}
+.zigzag-bottom {
+  background: #000;
+  background: #1abc9c;
+  bottom: -80px;
+  height: 165px;
+  left: -5%;
+  position: absolute;
+  transform: rotate(3deg);
+  width: 108%;
+  z-index: 9;
+}
+.footer-bottom-area {
+  background: #000;
+  color: #fff;
+  padding-bottom: 40px;
+}
+.img_cart {
+  width: 100px;
+  height: auto;
 }

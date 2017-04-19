@@ -4,7 +4,7 @@ class CreateOrders < ActiveRecord::Migration[5.0]
       t.string :address
       t.string :phone
       t.text :note
-      t.integer :status, default: 1
+      t.integer :status, default: 0
       t.datetime :delivery_day
       t.integer :discount, default: 0
       t.references :user, foreign_key: true

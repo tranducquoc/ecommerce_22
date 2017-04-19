@@ -1,2 +1,21 @@
 <% provide :title, t("home") %>
-<h1><%= t "home" %></h1>
+<%= render "layouts/panel_UI" %>
+<%= render "layouts/sidebar_left_UI" %>
+<div class="col-sm-9 top_products">
+  <div class="border_top_product">
+    <div class="home_title">
+      <h2 class="title"><%= t "top_order_products" %></h2>
+    </div>
+    <ul class="row product_list">
+      <%= render partial: "layouts/product_item", collection: @support.top_order_products, as: :product %>
+    </ul>
+  </div>
+  <div class="border_top_product">
+    <div class="home_title">
+      <h2 class="title"><%= t "top_new_products" %></h2>
+    </div>
+    <ul class="row product_list">
+      <%= render partial: "layouts/product_item", collection: @support.top_new_products, as: :product %>
+    </ul>
+  </div>
+</div>

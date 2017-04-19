@@ -6,7 +6,7 @@
   </form>
   <ul class="nav menu">
     <li class="lagure_menu">
-      <%= link_to "#" do %>
+      <%= link_to admin_admins_path do %>
         <%= inline_svg "icon/svg/monitor.svg", class: "menu_icon" %>
         <%= t "genaral" %>
       <% end %>
@@ -17,24 +17,24 @@
         <%= t "manage_products" %>
       <% end %>
       <div class="menu_son">
-        <%= link_to t("add_product"), new_product_path, class: "mutile_menu" %>
-        <%= link_to t("show_product"), products_path, class: "mutile_menu" %>
+        <%= link_to t("add_product"), new_admin_product_path, class: "mutile_menu" %>
+        <%= link_to t("show_product"), admin_products_path, class: "mutile_menu" %>
       </div>
     </li>
     <li class="lagure_menu">
-      <%= link_to "#" do %>
+      <%= link_to admin_users_path do %>
         <%= inline_svg "icon/svg/avatar.svg", class: "menu_icon" %>
         <%= t "manage_users" %>
       <% end %>
     </li>
     <li class="lagure_menu">
-      <%= link_to "#" do %>
+      <%= link_to admin_orders_path do %>
         <%= inline_svg "icon/svg/shopping-bag.svg", class: "menu_icon" %>
         <%= t "manage_oders" %>
       <% end %>
     </li>
     <li class="lagure_menu">
-      <%= link_to new_category_path do %>
+      <%= link_to new_admin_category_path do %>
         <%= inline_svg "icon/svg/copy.svg", class: "menu_icon" %>
         <%= t "manager_categories" %>
       <% end %>

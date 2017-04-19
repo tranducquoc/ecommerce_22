@@ -1,0 +1,108 @@
+<% provide :title, t("order") %>
+<div class="row status_value" data-status="<%= Order.statuses[@order.status] %>">
+  <div class="col-sm-4">
+    <div class="top_products border_top_product form_center">
+      <div class="home_title">
+        <h2 class="title"><%= t "order_details" %></h2>
+      </div>
+      <div class="panel-body">
+        <table class="table table-user-information">
+          <tbody>
+            <tr>
+              <td><%= t "id_order" %></td>
+              <td><%= @order.id %></td>
+            </tr>
+            <tr>
+              <td><%= t "receive_phone" %></td>
+              <td><%= @order.phone %></td>
+            </tr>
+            <tr>
+              <td><%= t "receive_address" %></td>
+              <td><%= @order.address %></td>
+            </tr>
+            <tr>
+              <td><%= t "created" %></td>
+              <td><%= l @order.created_at, format: :dmy_hms_concise %>
+              </td>
+            </tr>
+            <tr>
+              <td><%= t "delivery_day" %></td>
+              <td><%= l @order.delivery_day, format: :date_month_year_concise %>
+              </td>
+            </tr>
+            <tr>
+              <td><%= t "count_products" %></td>
+              <td><%= @order.order_details.size %>
+              </td>
+            </tr>
+            <tr>
+              <td><%= t "count_categories" %></td>
+              <td><%= @order.order_details.sum :quantity %></td>
+            </tr>
+            <tr>
+              <td><%= t "sum_money" %></td>
+              <td><%= number_to_currency OrderLib.total_money(@order) %></td>
+            </tr>
+            <tr>
+              <td><%= t "discount" %></td>
+              <td>
+                <%= t("number.discount", discount: @order.discount) %>
+                <%= " = " << number_to_currency(OrderLib.calculate_discount(@order)) %>
+              </td>
+            </tr>
+            <tr>
+              <td><%= t "total_price" %></td>
+              <td>
+                <h4 class="price">
+                  <%= number_to_currency OrderLib.total_money_after_discount(@order) %>
+                </h4>
+              </td>
+            </tr>
+            <tr>
+              <td><%= t "note_order" %></td>
+              <td>
+                <%= form_for @order do |o| %>
+                  <%= render "shared/error_messages", object: @order %>
+                  <%= o.text_area :note, class: "form-control note_order" %>
+                  <%= o.submit t("update"), class: "btn btn-custom btn-success button_check_status" %>
+                <% end %>
+              </td>
+            </tr>
+            <tr>
+              <td><%= t "order_status" %></td>
+              <td class="font_status"><%= @order.status %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-8">
+    <div class="top_products border_top_product form_center">
+      <div class="home_title">
+        <h2 class="title"><%= t "list_items" %></h2>
+      </div>
+      <div>
+        <section class="section_table table_form">
+          <table class="table table-bordered" id="datatable" data-status="<%= Order.statuses["#{@order.status}"] %>">
+            <thead>
+              <tr class="title_table">
+                <th class="title_cell"><%= t "id" %></th>
+                <th class="title_cell"><%= t "name" %></th>
+                <th class="title_cell"><%= t "image" %></th>
+                <th class="title_cell"><%= t "price" %></th>
+                <th class="title_cell"><%= t "quantity" %></th>
+                <th class="title_cell"><%= t "total" %></th>
+                <th class="title_cell"><%= t "function" %></th>
+              </tr>
+            </thead>
+            <tbody>
+              <%= render partial: "table_items",
+                collection: @order_details, as: :order_detail %>
+            </tbody>
+          </table>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>

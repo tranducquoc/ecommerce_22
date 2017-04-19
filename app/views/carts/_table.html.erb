@@ -1,0 +1,25 @@
+<tr class="content_table" >
+  <td class="item"><%= cart["product_id"] %></td>
+  <td class="item"><%= cart["product_name"] %></td>
+  <% if cart["product_image"].present? %>
+    <td class="item"><%= image_tag "#{cart["product_image"]}", class: "img_cart" %></td>
+  <% else %>
+    <td class="item"><%= image_tag t "no_image", class: "img_cart" %></td>
+  <% end %>
+  <td class="item"><%= text_area_tag cart[""], cart["note"], class: "note_order" %></td>
+  <td class="item"><%= number_to_currency cart["price"] %></td>
+  <td class="item">
+    <%= number_field_tag "",cart["quantity"], class: "form-control size_field",
+      min: Settings.minimum_quantily, max: Settings.maximum_quantity %>
+  </td>
+  <td class="item price">
+    <%= number_to_currency OrderLib.total(cart["price"].to_i, cart["quantity"].to_i) %>
+  </td>
+  <td class="item">
+    <%= link_to t("update"), "javascript:void(0)", method: :update,
+      class: "btn btn-custom btn-info btn-update-cart",
+      data_id: cart["product_id"] %>
+    <%= link_to t("delete"), cart_path(cart["product_id"]), method: :delete,
+      data: {confirm: t("are_you_sure")}, class: "btn btn-custom btn-danger" %>
+  </td>
+</tr>

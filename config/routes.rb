@@ -9,18 +9,21 @@ Rails.application.routes.draw do
     get "/profile", to: "users#show"
     post "/signup", to: "users#create"
     post "/login", to: "sessions#login"
+    get "/error", to: "static_pages#error"
+    get "/error1", to: "static_pages#error1"
 
     resources :users
     resources :statistics, only: :show
     resources :categories
     resources :imports, only: :create
     resources :products
-    resources :admins
     resources :products
     resources :rates
     resources :suggests
     resources :carts
     resources :orders
+    resources :order_details
+    resources :payments
 
     namespace :admin do
       resources :orders
@@ -32,6 +35,7 @@ Rails.application.routes.draw do
       resources :admins
       resources :products
       resources :orders
+      resources :order_details, only: :destroy
     end
   end
 end

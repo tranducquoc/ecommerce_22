@@ -1,5 +1,25 @@
 class OrderLib
   class << self
+    def number_product cart
+      count = 0
+      cart.each do |c|
+        count += c["quantity"].to_i
+      end
+      count
+    end
+
+    def toatl_money_cart cart
+      total = 0
+      cart.each do |c|
+        total += total(c["quantity"].to_i, c["price"].to_i)
+      end
+      total
+    end
+
+    def discount money, discount
+      money * discount / 100
+    end
+
     def total_money_after_discount order
       total_money(order) - calculate_discount(order)
     end
@@ -19,6 +39,10 @@ class OrderLib
         total_money += o.price*o.quantity
       end
       return total_money
+    end
+
+    def total num1, num2
+      num1*num2
     end
   end
 end

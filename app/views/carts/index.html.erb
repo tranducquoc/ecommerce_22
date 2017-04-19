@@ -1,0 +1,72 @@
+<% provide :title, t("cart") %>
+<div class="row form_user">
+  <div class="top_products border_top_product form_center">
+    <div class="home_title">
+      <h2 class="title"><%= t "your_cart" %></h2>
+    </div>
+    <div>
+      <section class="section_table table_form">
+        <table class="table table-bordered" id="datatable">
+          <thead>
+            <tr class="title_table">
+              <th class="title_cell"><%= t "id" %></th>
+              <th class="title_cell"><%= t "name" %></th>
+              <th class="title_cell"><%= t "image" %></th>
+              <th class="title_cell"><%= t "note" %></th>
+              <th class="title_cell"><%= t "price" %></th>
+              <th class="title_cell"><%= t "quantity" %></th>
+              <th class="title_cell"><%= t "total" %></th>
+              <th class="title_cell"><%= t "funtion" %></th>
+            </tr>
+          </thead>
+          <tbody>
+            <%= render partial: "table", collection: @carts, as: :cart %>
+          </tbody>
+        </table>
+      </section>
+    </div>
+    <%= link_to t("payment_now"), payments_path ,
+    class: "btn btn-custom btn-info" %>
+  </div>
+</div>
+<div id="modal_payments" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <div class="row form_user not_pading_top">
+        <div class="top_products border_top_product center_form">
+          <div class="home_title">
+            <h2 class="title"><%= t "register" %></h2>
+          </div>
+          <div class="col-sm-9 center_form">
+            <%= form_for(@user, url: signup_path) do |f| %>
+            <%= render "shared/error_messages", object: f.object %>
+            <%= f.label :name, t("name") %>
+            <%= f.text_field :name, class: "form-control" %>
+
+            <%= f.label :address, t("address") %>
+            <%= f.text_field :address, class: "form-control" %>
+
+            <%= f.label :phone, t("phone") %>
+            <%= f.phone_field :phone, class: "form-control" %>
+
+            <%= f.label :email, t("email") %>
+            <%= f.email_field :email, class: "form-control" %>
+
+            <%= f.label :password, t("password") %>
+            <%= f.password_field :password, class: "form-control" %>
+
+            <%= f.label :password_confirmation, t("password_conf") %>
+            <%= f.password_field :password_confirmation, class: "form-control" %>
+
+            <br>
+            <div class="button_center">
+             <%= f.submit t("create_my_account"), class: "btn btn-custom btn-info" %>
+            </div>
+          <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
