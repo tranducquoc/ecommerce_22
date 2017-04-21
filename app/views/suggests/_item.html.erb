@@ -1,0 +1,9 @@
+<tr class="content_table" data-id="<%= suggest.id %>">
+  <td class="item"><%= suggest.id %></td>
+  <td class="item"><%= l suggest.created_at, format: :dmy_hms_concise %></td>
+  <td class="item font_status"><%= suggest.status %></td>
+  <td class="item">
+    <%= link_to t("detail"), "#modal#{suggest.id}",
+      class: "btn btn-custom btn-success", data:{toggle: "modal"} %>
+  </td>
+</tr>

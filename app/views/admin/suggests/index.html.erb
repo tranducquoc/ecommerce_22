@@ -1,0 +1,24 @@
+<% provide :title, t("suggests") %>
+<% provide :page_header, t("show_suggests") %>
+<div class="panel panel-default">
+  <div class="panel-heading"><%= t "all_suggests" %></div>
+  <section class="section_table">
+    <table class="table table-bordered" id="datatable">
+      <thead>
+        <tr class="title_table">
+          <th class="title_cell"><%= t "id" %></th>
+          <th class="title_cell"><%= t "user_name" %></th>
+          <th class="title_cell"><%= t "user_email" %></th>
+          <th class="title_cell"><%= t "created" %></th>
+          <th class="title_cell"><%= t "status" %></th>
+          <th class="title_cell"><%= t "function" %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render partial: "table", collection: @suggests, as: :suggest %>
+      </tbody>
+    </table>
+  </section>
+  <div class="pagrinate"><%= will_paginate @suggests %></div>
+</div>
+<%= render partial: "modal", collection: @suggests, as: :suggest %>

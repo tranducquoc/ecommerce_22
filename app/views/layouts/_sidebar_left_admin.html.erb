@@ -40,10 +40,14 @@
       <% end %>
     </li>
    <li class="lagure_menu">
-      <%= link_to "#" do %>
+      <%= link_to "javascript:void(0)" do %>
         <%= inline_svg "icon/svg/chat-2.svg", class: "menu_icon" %>
         <%= t "manage_requests" %>
       <% end %>
+      <div class="menu_son">
+        <%= link_to t("suggest"), admin_suggests_path, class: "mutile_menu" %>
+        <%= link_to t("rates"), admin_rates_path, class: "mutile_menu" %>
+      </div>
     </li>
   </ul>
 </div>

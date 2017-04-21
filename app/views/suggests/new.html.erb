@@ -1,0 +1,17 @@
+<% provide :title, t("suggest") %>
+<%= render "layouts/panel_UI" %>
+<%= render "layouts/sidebar_left_UI" %>
+<div class="col-sm-9 top_products">
+  <div class="border_top_product">
+    <div class="home_title">
+      <h2 class="title"><%= t "suggest" %></h2>
+    </div>
+    <%= form_for @suggest do |f| %>
+      <div class="field">
+        <%= f.text_area :info, class: "ckeditor" %>
+        <br>
+        <%= f.submit t("send_suggest"), class: "btn btn-custom btn-info" %>
+      </div>
+    <% end %>
+  </div>
+</div>

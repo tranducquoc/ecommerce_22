@@ -1,10 +1,13 @@
 class Product < ApplicationRecord
+  enum status: {selling: 0, soldout: 1, prepare: 2, stopbusiness: 3}
+
   belongs_to :categorie
 
   has_many :order_details
   has_many :comments, dependent: :destroy
   has_many :rates, dependent: :destroy
   has_many :carts, dependent: :destroy
+  has_many :notification_emails, dependent: :destroy
 
   mount_uploader :image, ImageUploader
 
@@ -18,12 +21,12 @@ class Product < ApplicationRecord
   delegate :name, to: :categorie, prefix: true
 
   scope :top_new_products, -> {order("created_at desc")
-    .limit(Settings.maximum_top_products)}
+    .includes(:rates).limit(Settings.maximum_top_products)}
   scope :top_order_products, -> {
     joins(:order_details).select("products.*,
     SUM(order_details.quantity) AS sum
     ").group("products.id").order("sum desc")
-    .limit(Settings.maximum_top_products)}
+    .includes(:rates).limit(Settings.maximum_top_products)}
 
   def self.import file
     spreadsheet = Roo::Spreadsheet.open(file.path)

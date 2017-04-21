@@ -14,15 +14,55 @@
     <div class="col-sm-8">
       <div class="product_title">
         <h2><%= "#{@product.name} (No.#{@product.id})" %></h2>
-        <h3><%= "rate" %></h3>
-        <h2 class="price_show"><%= number_to_currency @product.price %></h2>
         <div>
-          <%= link_to t("add_to_cart"), carts_path(product_id: @product.id,
-            product_name: @product.name, product_image: @product.image , note: "",
-            quantity: 1, price: @product.price), method: :post,
-            class: "btn btn_custom btn-success btn_cart add_to_cart", remote: true %>
-          <%= link_to t("buy_now"), payments_path,
-            class: "btn btn-custom btn-danger display_not" %>
+          <div class="row lead">
+            <div id="stars" class="starrr" data-rating="<%= your_rate @rate %>"></div>
+            <span id="num_star" ><%= your_rate @rate %></span>
+            <span id="count" data-rate="<%= your_rate @rate %>" data-loged="<%= loged? %>"
+              data-product="<%= @product.id %>">
+              <%= link_to "","javascript:void(0)",
+                class: "glyphicon glyphicon-ok-sign success_rate" %>
+            </span>
+          </div>
+        </div>
+        <% if @product.stopbusiness? %>
+          <h3>
+            <div class="status_show_nosell"><%= check_status_product @product %></div>
+          </h3>
+          <h2 class="price_show"><%= number_to_currency 0 %></h2>
+        <% else %>
+          <% if @product.selling? %>
+            <h3>
+              <div class="status_show_sell"><%= check_status_product @product %></div>
+            </h3>
+          <% else %>
+            <h3>
+              <div class="status_show_presell"><%= check_status_product @product %></div>
+            </h3>
+          <% end %>
+          <h2 class="price_show"><%= number_to_currency @product.price %></h2>
+        <% end %>
+        <div>
+          <% if @product.selling? %>
+            <%= link_to t("add_to_cart"), carts_path(product_id: @product.id,
+              product_name: @product.name, product_image: @product.image , note: "",
+              quantity: 1, price: @product.price), method: :post,
+              class: "btn btn_custom btn-success btn_cart add_to_cart", remote: true %>
+            <%= link_to t("buy_now"), payments_path,
+              class: "btn btn-custom btn-danger display_not" %>
+          <% else %>
+            <% if @product.prepare? || @product.soldout? %>
+              <% if loged? %>
+                <%= link_to t("email_noti"), "javascript:void(0)",
+                  class: "btn btn_custom btn-info btn_cart email_noti",
+                  data: {user_id: current_user.id, product_id: @product.id} %>
+              <% else %>
+                <%= link_to t("email_noti"), "javascript:void(0)",
+                  class: "btn btn_custom btn-info btn_cart email_noti",
+                  disabled: "disabled" %>
+              <% end %>
+            <% end %>
+          <% end %>
         </div>
       </div>
       <br>

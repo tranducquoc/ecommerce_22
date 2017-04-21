@@ -1,7 +1,6 @@
 class Admin::ProductsController < ApplicationController
   layout "admin_layout"
   before_action :check_admin
-
   before_action :load_product, only: [:destroy, :update]
 
   def new
@@ -41,10 +40,32 @@ class Admin::ProductsController < ApplicationController
   end
 
   def update
-    if @product.update_attributes product_params
-      flash[:success] = t "update_product_success"
+    product = Product.find_by id: params[:id]
+    @product = product_params
+    if product.status != "selling" && @product["status"] == "selling"
+      if product.update_attributes product_params
+        @user_regiter_email = product.notification_emails.count_email_regiter
+        @user_regiter_email.transaction do
+          @user_regiter_email.each do |u|
+            @user = u.user
+            if @user
+              ProductMaillerMailer.regiter_product(@user, product).deliver
+              @noti = NotificationEmail.find_by id: u.id
+              @noti.is_sended = true
+              @noti.save
+            end
+          end
+        end
+        flash[:success] = t "update_product_success"
+      else
+        flash[:danger] = t "update_product_fail"
+      end
     else
-      flash[:danger] = t "update_product_fail"
+      if product.update_attributes product_params
+        flash[:success] = t "update_product_success"
+      else
+        flash[:danger] = t "update_product_fail"
+      end
     end
     redirect_to :back
   end
@@ -59,6 +80,6 @@ class Admin::ProductsController < ApplicationController
   end
 
   def product_params
-    params.require(:product).permit :name, :info, :price, :image, :categorie_id
+    params.require(:product).permit :name, :info, :price, :status, :image, :categorie_id
   end
 end

@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :rates, dependent: :destroy
   has_many :suggests, dependent: :destroy
   has_many :carts, dependent: :destroy
+  has_many :notification_emails, dependent: :destroy
 
   before_save :downcase_email
 

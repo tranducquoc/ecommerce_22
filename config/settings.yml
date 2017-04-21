@@ -15,3 +15,5 @@ maximum_top_products: 8
 maximum_note: 5000
 delivery_day: 2
 end_status_order: 5
+end_status_suggest: 2
+maximum_suggest: 9000

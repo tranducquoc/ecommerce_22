@@ -1,3 +1,12 @@
+$(document).ready(function(){
+  if ($('textarea').length > 0) {
+    var data = $('.ckeditor');
+    $.each(data, function(i) {
+      CKEDITOR.replace(data[i].id)
+    });
+  }
+});
+
 $(document).ready(function() {
   console.log( 'ready!' );
   $('.change_picture').bind('change', function() {
@@ -149,7 +158,6 @@ $(document).ready(function(){
     var user = $(this).data('user');
     $(this).parents('tbody').find('#order_address').val(user.address);
     $(this).parents('tbody').find('#order_phone').val(user.phone);
-    alert(user.id);
   });
 });
 $(document).ready(function(){
@@ -176,6 +184,31 @@ $(document).ready(function(){
       },
       error: function(errors) {
         alert('<%= I18n.t("voicher_not_exist") %>');
+      }
+    });
+  });
+});
+$(document).ready(function(){
+  $('.email_noti').click(function(){
+    var user_id = $(this).data('user-id');
+    var product_id = $(this).data('product-id');
+    alert(user_id +" / "+ product_id);
+    $.ajax({
+      type: 'POST',
+      url: '/notification_emails',
+      dataType: 'json',
+      context: this,
+      data: {
+        notification_email: {
+          user_id: user_id,
+          product_id: product_id
+        }
+      },
+      success: function(response) {
+        alert(response.message);
+      },
+      error: function(errors) {
+        alert('ajax error')
       }
     });
   });

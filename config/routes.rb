@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  mount Ckeditor::Engine => '/ckeditor'
   scope "(:locale)", :locale => /en|vi/ do
     root "static_pages#index"
     get "/login", to: "sessions#new"
@@ -24,6 +25,7 @@ Rails.application.routes.draw do
     resources :orders
     resources :order_details
     resources :payments
+    resources :notification_emails, only:[:create, :new]
 
     namespace :admin do
       resources :orders

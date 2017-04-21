@@ -10,6 +10,7 @@
           <%= form_for [:admin, product],
             html: {multipart: true} do |f| %>
             <%= render "shared/error_messages", object: f.object %>
+
             <%= f.label :name, t("name") %>
             <%= f.text_field :name, class: "form-control" %>
 
@@ -25,6 +26,14 @@
               @categories.collect {|a| [ a.name, a.id ]},
               {prompt: t("view.product")},
               class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :status, t("status") %>
+              <%= f.select :status,
+                Product.statuses.sort.collect {|a| [a[0].upcase, a[0]]},
+                {prompt: t("view.product")}, class: "form-control" %>
+              <%= t("count_email_register",
+                number: product.notification_emails.count_email_regiter.count ) %>
             </div>
             <span class="picture">
               <%= f.file_field :image, class: "change_picture",

@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  before_action :load_categories, only: [:show]
+  before_action :load_categories, only: :show
 
   def show
     @categorie = Categorie.find_by id: params[:id]

@@ -1,0 +1,60 @@
+<div id=":lj" class="ii gt adP adO">
+  <div id=":li" class="a3s aXjCH m15b5bde763192477"><u></u>
+  <div>
+    <div class="m_8745720239803315847container">
+      <div class="m_8745720239803315847content">
+        <h1 align="center" style="color: #219e05;">
+          <span>
+            <img src="https://image.ibb.co/f8HgFk/Untitled_1.jpg" style="height: 150px;" >
+          </span>
+        </h1>
+        <p align="center" style="color: #70bb14;"><%= t "mail_thank" %></p>
+        <h2 align="center"><%= t "mess_product" %></h2>
+        <br>
+        <h2 align="center"><%= t "product_details" %></h2>
+        <table align="center">
+          <tbody>
+            <tr>
+              <th scope="row">
+                <div align="right"><%= t "id" %>:</div>
+              </th>
+              <td>
+                <div align="left" style="font-weight: bold;"><%= @product.id %></div>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">
+                <div align="right"><%= t "name" %>:</div>
+              </th>
+              <td>
+                <div align="left"><%= @product.name %></div>
+              </td>
+            </tr>
+
+            <tr>
+              <th scope="row">
+                <div align="right"><%= t "price" %>:</div>
+              </th>
+              <td>
+                <div align="left"><%= number_to_currency @product.price %></div>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">
+                <div align="right"><%= t "Status" %>:</div>
+              </th>
+              <td>
+                <div align="left" style="font-weight: bold;
+                  font-variant: small-caps; font-size: 20px;">
+                  <%= @product.status %>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <br>
+        <p align="center"><%= t"end_email" %></p>
+      </div>
+    </div>
+  </div>
+</div>

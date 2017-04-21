@@ -1,5 +1,5 @@
 class StaticPagesController < ApplicationController
-  before_action :load_categories, only: [:index]
+  before_action :load_categories, only: :index
 
   def contact
   end

@@ -18,19 +18,20 @@ class OrdersController < ApplicationController
     @order.user_id = current_user.id
     @carts = session[:cart]
     @order.transaction do
-      if @order.save!
+      if @order.save
         @carts.each do |c|
           @orderdetail = @order.order_details.new product_id: c["product_id"],
             quantity: c["quantity"], note: c["note"], price: c["price"]
           @orderdetail.transaction do
-            raise t "view.orders.create.trans_fail" unless @orderdetail.save!
+            raise t "create_order_fail" unless @orderdetail.save!
           end
         end
         OrderUserMailer.order_to_user(current_user, @carts, @order).deliver
         session[:cart].clear
-        flash[:success] = t "view.orders.create.success_msg"
+        flash[:success] = t "create_order_success"
         redirect_to root_path
       else
+        flash[:danger] = t "create_order_fail"
         redirect_to :back
       end
     end
