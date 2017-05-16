@@ -12,3 +12,7 @@ class CategoriesController < ApplicationController
     end
   end
 end
+
+ghghjvhj
+111111111111111111111111111111
+ghjhv
